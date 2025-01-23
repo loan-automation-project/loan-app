@@ -1,0 +1,50 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #007BFF;
+    color: white;
+  }
+  
+  .header-left {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+  
+  .header-right {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .header-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .login-button {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .register-button {
+    background-color: #ffc107;
+    color: black;
+  }
+  
+  .header-button:hover {
+    opacity: 0.8;
+  }
+  

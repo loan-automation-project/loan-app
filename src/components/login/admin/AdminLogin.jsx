@@ -1,67 +1,64 @@
-
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for page redirection
-import './LoginForm.css'; // Import the CSS file for styling
+import { useNavigate } from 'react-router-dom';
+import './AdminLogin.css';
 
-function LoginForm() {
+function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`Logging in with Email: ${email}, Password: ${password}`);
+    console.log(`Admin logging in with Email: ${email}, Password: ${password}`);
   };
 
   return (
-    <div className="login-form-container">
-      <h2 className="login-title">Admin Login</h2>
-      <form onSubmit={handleSubmit} className="login-form">
+    <div className="admin-login-container">
+      <h2 className="admin-login-title">Admin Login</h2>
+      <form onSubmit={handleSubmit} className="admin-login-form">
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="admin-email">Email:</label>
           <input
             type="email"
-            id="email"
+            id="admin-email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
+            placeholder="Enter your admin email"
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="admin-password">Password:</label>
           <input
             type="password"
-            id="password"
+            id="admin-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
             required
           />
         </div>
-        <button type="submit" className="login-button">
+        <button type="submit" className="admin-login-button">
           Login
         </button>
       </form>
-      
-      {/* Register Link */}
-      <div className="register-link-container">
+
+      {/* User Login Link */}
+      <div className="link-container">
         <p>
-          Don't have an account?{' '}
-          <span
-            className="register-link"
-            onClick={() => navigate('/register')} // Redirect to register page on click
+          <a
+            className="user-login-link"
+            onClick={() => navigate('/login')}
           >
-            Register Here
-          </span>
+            Login as User
+          </a>
         </p>
+
+        {/* Register Link */}
+        
       </div>
-
-
-
-      
     </div>
   );
 }
 
-export default LoginForm;
+export default AdminLogin;

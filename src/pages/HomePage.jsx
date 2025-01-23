@@ -1,47 +1,4 @@
 
-// import React from "react";
-// import { useNavigate } from "react-router-dom";
-// import "./HomePage.css";
-
-// function HomePage() {
-//   const navigate = useNavigate();
-
-//   return (
-//     <div className="homepage-container">
-//       <header className="header">
-//         <div className="header-left">
-//           <a onClick={() => navigate("/")} className="nav-link">
-//             Home
-//           </a>
-//           <a onClick={() => navigate("/about")} className="nav-link">
-//             About
-//           </a>
-//         </div>
-//         <div className="header-right">
-//           <button
-//             className="header-button login-button"
-//             onClick={() => navigate("/login")}
-//           >
-//             Login
-//           </button>
-//           <button
-//             className="header-button register-button"
-//             onClick={() => navigate("/register")}
-//           >
-//             Register
-//           </button>
-//         </div>
-//       </header>
-//       <main className="main-content">
-//         <h1>Welcome to the Homepage</h1>
-//         <p>Explore our website to learn more about what we offer!</p>
-//       </main>
-//     </div>
-//   );
-// }
-
-// export default HomePage;
-
 
 import React from "react";
 import { useNavigate } from "react-router-dom";

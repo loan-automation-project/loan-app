@@ -3,11 +3,15 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 // import './App.css'
 import LoginForm from './components/login/LoginForm'
-import LoginPage from './components/login/LoginPage'
+// import LoginPage from './components/login/LoginPage'
 import { Routes, Router, Route, BrowserRouter } from 'react-router-dom'; 
 import RegisterForm from './components/register/RegisterForm'
 import HomePage from './pages/HomePage'
 import AboutUs from './pages/about/AboutUs'
+import AdminLogin from './components/login/admin/AdminLogin'
+import LoginPage from './components/login/LoginPage'
+import RegisterPage from './components/register/RegisterPage';
+import AdminPage from './components/login/admin/AdminPage';
 
 function App() {
 
@@ -30,9 +34,11 @@ function App() {
 {/* <Router> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/register" element={<RegisterForm />} />
+        {/* <Route path="/login" element={<LoginForm />} /> */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/admin-login" element={<AdminPage />} />
       </Routes>
     {/* </Router> */}
     </BrowserRouter>
