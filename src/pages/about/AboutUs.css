@@ -1,0 +1,118 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc;
+  }
+  
+  /* Header Styles */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .header-left .nav-link {
+    margin-right: 15px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .header-left .nav-link:hover {
+    text-decoration: underline;
+  }
+  
+  .header-right .header-button {
+    margin-left: 10px;
+    padding: 8px 15px;
+    background-color: white;
+    color: #4caf50;
+    border: 1px solid #4caf50;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .header-right .header-button:hover {
+    background-color: #45a049;
+    color: white;
+  }
+  
+  /* About Us Content Styles */
+  .aboutus-content {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .aboutus-description h2 {
+    margin-bottom: 10px;
+  }
+  
+  .aboutus-description p {
+    line-height: 1.6;
+    color: #555;
+  }
+  
+  /* Contact Form Styles */
+  .contact-us {
+    margin-top: 30px;
+  }
+  
+  .contact-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .contact-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .contact-form textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  
+  .contact-submit {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .contact-submit:hover {
+    background-color: #45a049;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    margin-top: 50px;
+  }
+  

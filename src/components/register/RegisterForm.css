@@ -1,0 +1,112 @@
+
+.register-form-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.register-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.mandatory-text {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.register-form .form-group {
+    margin-bottom: 15px;
+}
+
+.register-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.register-form input,
+.register-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.register-form input:focus,
+.register-form select:focus {
+    outline: none;
+    border-color: #4caf50;
+    box-shadow: 0 0 4px rgba(76, 175, 80, 0.2);
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.register-button,
+.cancel-button {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 30px; /* Make buttons more curved */
+    cursor: pointer;
+}
+
+.register-button {
+    background-color: #4caf50;
+}
+
+.register-button:hover {
+    background-color: #45a049;
+}
+
+.cancel-button {
+    background-color: #f44336;
+}
+
+.cancel-button:hover {
+    background-color: #d32f2f;
+}
+
+ /* .login-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #4caf50;  
+}
+
+.login-link a:hover {
+    text-decoration: underline; 
+    cursor: pointer;
+}  */
+.login-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #4caf50;  /* Set color to match the register button */
+    text-decoration: none;  /* No underline initially */
+    cursor: pointer;
+  }
+  
+  .login-link:hover {
+    text-decoration: underline;  /* Underline on hover to make it look like a hyperlink */
+  }
+  
