@@ -3,98 +3,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f4f8;
-    color: #333;
-  }
-  
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .header-left {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .nav-link {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  
-  .nav-link:hover {
-    color: #c8e6c9;
-  }
-  
-  .header-right {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .header-button {
-    padding: 8px 15px;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .login-button {
-    background-color: #2196f3;
-    color: white;
-  }
-  
-  .login-button:hover {
-    background-color: #1976d2;
-  }
-  
-  .register-button {
-    background-color: #ff5722;
-    color: white;
-  }
-  
-  .register-button:hover {
-    background-color: #e64a19;
-  }
-  
-  
-  .main-content {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .main-content h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-  
-  .main-content p {
-    font-size: 18px;
-    color: #555;
-  }
-   */
-
-
-
-
-
-   /* HomePage.css */
-
-/* General Page Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     background-color: #f4f4f4;
   }
   
@@ -104,7 +12,7 @@ body {
     height: 100vh;
   }
   
-  /* Header Styles */
+
   .header {
     display: flex;
     justify-content: space-between;
@@ -154,8 +62,7 @@ body {
   .header-button:hover {
     opacity: 0.8;
   }
-  
-  /* Main Content Styles */
+
   .main-content {
     padding: 40px 20px;
     text-align: center;
@@ -171,7 +78,7 @@ body {
     margin-bottom: 40px;
   }
   
-  /* Carousel Section */
+  
   .carousel-section {
     margin: 40px 0;
   }
@@ -194,7 +101,7 @@ body {
     transform: scale(1.05);
   }
   
-  /* How It Works Section */
+  
   .how-it-works {
     background-color: #f9f9f9;
     padding: 40px 20px;
@@ -234,7 +141,7 @@ body {
     font-size: 1rem;
   }
   
-  /* Reasons to Choose Us Section */
+  
   .reasons-to-choose-us {
     padding: 40px 20px;
   }
@@ -269,7 +176,7 @@ body {
     font-size: 1rem;
   }
   
-  /* Footer Styles */
+
   .footer {
     background-color: #007BFF;
     color: white;
@@ -283,7 +190,7 @@ body {
     margin: 0;
   }
   
-  /* Responsive Styles */
+ 
   @media (max-width: 768px) {
     .steps-cards {
       flex-direction: column;
@@ -313,4 +220,771 @@ body {
       width: 100%;
     }
   }
-  
+   */
+
+
+
+
+   /* HomePage.css */
+
+/* General Page Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #007BFF;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-left {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
+
+.header-right {
+  display: flex;
+  gap: 15px;
+}
+
+.header-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.login-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.register-button {
+  background-color: #ffc107;
+  color: black;
+}
+
+.header-button:hover {
+  opacity: 0.8;
+}
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.main-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.main-content p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+/* Carousel Section */
+.carousel-section {
+  margin: 40px 0;
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.carousel img {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel img:hover {
+  transform: scale(1.05);
+}
+
+/* How It Works Section */
+.how-it-works {
+  background-color: #f9f9f9;
+  padding: 40px 20px;
+}
+
+.how-it-works h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.how-it-works p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.steps-cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.step-card {
+  background-color: white;
+  padding: 20px;
+  width: 30%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.step-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.step-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Reasons to Choose Us Section */
+.reasons-to-choose-us {
+  padding: 40px 20px;
+}
+
+.reasons-to-choose-us h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.reasons-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.reason-card {
+  background-color: white;
+  padding: 20px;
+  width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.reason-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.reason-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #007BFF;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+}
+
+.footer p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .steps-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step-card {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .reasons-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reason-card {
+    width: 80%;
+  }
+
+  .carousel {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carousel img {
+    width: 100%;
+  }
+}
+
+
+
+
+/* General Page Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #007BFF;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-left {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
+
+.header-right {
+  display: flex;
+  gap: 15px;
+}
+
+.header-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.login-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.register-button {
+  background-color: #ffc107;
+  color: black;
+}
+
+.header-button:hover {
+  opacity: 0.8;
+}
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.main-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.main-content p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+/* Carousel Section */
+.carousel-section {
+  margin: 40px 0;
+  position: relative;
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.carousel-image {
+  width: 100%;
+  max-width: 800px; /* Adjust this value to control the image size */
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 24px;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button.prev {
+  left: 20px;
+}
+
+.carousel-button.next {
+  right: 20px;
+}
+
+/* How It Works Section */
+.how-it-works {
+  background-color: #f9f9f9;
+  padding: 40px 20px;
+}
+
+.how-it-works h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.how-it-works p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.steps-cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.step-card {
+  background-color: white;
+  padding: 20px;
+  width: 30%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.step-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.step-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Reasons to Choose Us Section */
+.reasons-to-choose-us {
+  padding: 40px 20px;
+}
+
+.reasons-to-choose-us h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.reasons-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.reason-card {
+  background-color: white;
+  padding: 20px;
+  width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.reason-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.reason-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #007BFF;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+}
+
+.footer p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .steps-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step-card {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .reasons-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reason-card {
+    width: 80%;
+  }
+
+  .carousel {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carousel img {
+    width: 100%;
+  }
+}
+
+
+
+
+
+/* General Page Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #007BFF;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-left {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
+
+.header-right {
+  display: flex;
+  gap: 15px;
+}
+
+.header-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.login-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.register-button {
+  background-color: #ffc107;
+  color: black;
+}
+
+.header-button:hover {
+  opacity: 0.8;
+}
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.main-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.main-content p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+/* Carousel Section */
+.carousel-section {
+  margin: 40px 0;
+  position: relative;
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.carousel-image {
+  width: 100%;
+  max-width: 800px; /* Adjust this value to control the image size */
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 24px;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button.prev {
+  left: 20px;
+}
+
+.carousel-button.next {
+  right: 20px;
+}
+
+/* How It Works Section */
+.how-it-works {
+  background-color: #f9f9f9;
+  padding: 40px 20px;
+}
+
+.how-it-works h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.how-it-works p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.steps-cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.step-card {
+  background-color: white;
+  padding: 20px;
+  width: 30%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.step-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.step-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Reasons to Choose Us Section */
+.reasons-to-choose-us {
+  padding: 40px 20px;
+}
+
+.reasons-to-choose-us h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.reasons-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.reason-card {
+  background-color: white;
+  padding: 20px;
+  width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.reason-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.reason-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #007BFF;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+}
+
+.footer p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .steps-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step-card {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .reasons-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reason-card {
+    width: 80%;
+  }
+
+  .carousel {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carousel img {
+    width: 100%;
+  }
+}
