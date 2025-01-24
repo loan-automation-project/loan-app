@@ -14,7 +14,7 @@ import RegisterPage from './components/register/RegisterPage';
 import AdminPage from './components/login/admin/AdminPage';
 import LoanApplicationPage from './components/loan-application/LoanApplicationPage'
 import Dashboard from './components/dashboard/Dashboard';
-import UserDashboard from './components/dashboard/UserDashboard';
+import UserDashboard from './components/dashboard/user-dashboard/UserDashboard';
 
 function App() {
 
