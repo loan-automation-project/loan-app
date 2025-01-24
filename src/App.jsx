@@ -13,6 +13,8 @@ import LoginPage from './components/login/LoginPage'
 import RegisterPage from './components/register/RegisterPage';
 import AdminPage from './components/login/admin/AdminPage';
 import LoanApplicationPage from './components/loan-application/LoanApplicationPage'
+import Dashboard from './components/dashboard/Dashboard';
+import UserDashboard from './components/dashboard/UserDashboard';
 
 function App() {
 
@@ -41,6 +43,8 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/admin-login" element={<AdminPage />} />
         <Route path="/loan-application" element={<LoanApplicationPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/user-dashboard" element={<UserDashboard />} />
 
       </Routes>
     {/* </Router> */}

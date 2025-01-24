@@ -1,0 +1,81 @@
+/* LoanApplicationForm.css */
+
+.loan-application-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .loan-application-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .loan-application-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .loan-application-form input,
+  .loan-application-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .loan-application-form input:focus,
+  .loan-application-form select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  .loan-application-form .array-field {
+    margin-bottom: 15px;
+  }
+  
+  .loan-application-form .array-field input {
+    margin-bottom: 10px;
+  }
+  
+  .loan-application-form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .loan-application-form button[type="button"] {
+    background-color: #6c757d;
+    margin-bottom: 20px;
+  }
+  
+  .loan-application-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .loan-application-form button[type="button"]:hover {
+    background-color: #5a6268;
+  }
+  
+  .loan-application-form .error {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
