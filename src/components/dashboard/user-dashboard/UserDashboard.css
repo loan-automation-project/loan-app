@@ -1,4 +1,4 @@
-
+/* 
 
 .user-dashboard {
   display: flex;
@@ -7,7 +7,7 @@
   background-color: #f5f5f5;
 }
 
-/* Header Styles */
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -85,7 +85,7 @@
   color: #ccc;
 }
 
-/* Profile Dropdown Styles */
+
 .profile-dropdown {
   position: absolute;
   top: 50px;
@@ -115,7 +115,6 @@
   background-color: #c82333;
 }
 
-/* Side Navigation Bar Styles */
 .side-nav {
   width: 250px;
   background-color: #2c3e50;
@@ -123,7 +122,7 @@
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   position: fixed;
-  top: 60px; /* Adjust based on header height */
+  top: 60px; 
   left: -250px;
   height: calc(100vh - 60px);
   transition: left 0.3s ease;
@@ -161,7 +160,7 @@
   background-color: #1abc9c;
 }
 
-/* Main Content Area Styles */
+
 .content {
   flex: 1;
   padding: 20px;
@@ -212,4 +211,203 @@
 
 
 
-   
+    */
+
+
+
+    .homepage-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+    
+    /* Header Styles */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #2c3e50;
+      color: white;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: #1abc9c;
+    }
+    
+    .header-right {
+      display: flex;
+      align-items: center;
+    }
+    
+    .header-button {
+      background-color: #1abc9c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-left: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .header-button:hover {
+      background-color: #16a085;
+    }
+    
+    /* Main Content Styles */
+    .main-content {
+      flex: 1;
+      padding: 20px;
+    }
+    
+    /* Carousel Section */
+    .carousel-section {
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    
+    .carousel {
+      width: 100%;
+      height: 500px; /* Fixed height for the carousel */
+      position: relative;
+    }
+    
+    .carousel-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .carousel-text {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      max-width: 50%;
+    }
+    
+    .carousel-text p {
+      margin: 10px 0;
+      line-height: 1.5;
+    }
+    
+    /* How It Works Section */
+    .how-it-works {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .how-it-works h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    .steps-cards {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .step-card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      flex: 1;
+      min-width: 200px;
+      max-width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .step-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .step-card h3 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    
+    .step-card p {
+      color: #555;
+    }
+    
+    /* Reasons to Choose Us Section */
+    .reasons-to-choose-us {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .reasons-to-choose-us h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    .reasons-cards {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .reason-card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      flex: 1;
+      min-width: 200px;
+      max-width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .reason-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .reason-card h3 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    
+    .reason-card p {
+      color: #555;
+    }
+    
+    /* Footer Styles */
+    .footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: auto;
+    }

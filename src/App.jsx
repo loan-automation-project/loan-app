@@ -17,6 +17,7 @@ import LoanApplicationForm from './components/loan-application/LoanApplicationFo
 import Dashboard from './components/dashboard/Dashboard';
 import UserDashboard from './components/dashboard/user-dashboard/UserDashboard';
 import EmiCalculator from './components/emi-calculator/EmiCalculator';
+import AdminDashboard from './components/dashboard/admin-dashboard/AdminDashboard';
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
         <Route path="/loan-application" element={<LoanApplicationForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/user-dashboard" element={<UserDashboard />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/emi-calculator" element={<EmiCalculator />} />
 
       </Routes>
