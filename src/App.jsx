@@ -12,9 +12,11 @@ import AdminLogin from './components/login/admin/AdminLogin'
 import LoginPage from './components/login/LoginPage'
 import RegisterPage from './components/register/RegisterPage';
 import AdminPage from './components/login/admin/AdminPage';
-import LoanApplicationPage from './components/loan-application/LoanApplicationPage'
+// import LoanApplicationPage from './components/loan-application/LoanApplicationPage'
+import LoanApplicationForm from './components/loan-application/LoanApplicationForm'
 import Dashboard from './components/dashboard/Dashboard';
 import UserDashboard from './components/dashboard/user-dashboard/UserDashboard';
+import EmiCalculator from './components/emi-calculator/EmiCalculator';
 
 function App() {
 
@@ -42,9 +44,10 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/admin-login" element={<AdminPage />} />
-        <Route path="/loan-application" element={<LoanApplicationPage />} />
+        <Route path="/loan-application" element={<LoanApplicationForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/user-dashboard" element={<UserDashboard />} />
+        <Route path="/emi-calculator" element={<EmiCalculator />} />
 
       </Routes>
     {/* </Router> */}

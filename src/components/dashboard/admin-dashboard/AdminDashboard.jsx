@@ -1,9 +1,7 @@
-
-
 import React, { useState } from "react";
-import "./UserDashboard.css"; // Import the CSS file
+import "./AdminDashboard.css"; // Import the CSS file
 
-const UserDashboard = () => {
+const AdminDashboard = () => {
   const [activeSection, setActiveSection] = useState("dashboard");
   const [isSideNavOpen, setIsSideNavOpen] = useState(false); // State to manage side nav visibility
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false); // State to manage profile dropdown
@@ -60,6 +58,7 @@ const UserDashboard = () => {
           <div className="main-content">
             <h2>Manage Users</h2>
             <p>View and manage all users in the system.</p>
+            {/* Add a table or form for user management */}
           </div>
         );
       case "roles":
@@ -67,6 +66,7 @@ const UserDashboard = () => {
           <div className="main-content">
             <h2>Manage Roles</h2>
             <p>View and manage user roles and permissions.</p>
+            {/* Add a table or form for role management */}
           </div>
         );
       case "loan_applications":
@@ -74,6 +74,7 @@ const UserDashboard = () => {
           <div className="main-content">
             <h2>Loan Applications</h2>
             <p>View and process loan applications.</p>
+            {/* Add a table or form for loan applications */}
           </div>
         );
       case "loan_approvals":
@@ -81,6 +82,7 @@ const UserDashboard = () => {
           <div className="main-content">
             <h2>Loan Approvals</h2>
             <p>Review and approve loan applications.</p>
+            {/* Add a table or form for loan approvals */}
           </div>
         );
       case "documents":
@@ -88,6 +90,7 @@ const UserDashboard = () => {
           <div className="main-content">
             <h2>Documents</h2>
             <p>Manage and view uploaded documents.</p>
+            {/* Add a table or form for document management */}
           </div>
         );
       case "transactions":
@@ -95,6 +98,7 @@ const UserDashboard = () => {
           <div className="main-content">
             <h2>Transactions</h2>
             <p>View and manage all transactions.</p>
+            {/* Add a table or form for transaction management */}
           </div>
         );
       default:
@@ -125,21 +129,13 @@ const UserDashboard = () => {
   };
 
   return (
-    <div className="user-dashboard">
+    <div className="admin-dashboard">
       {/* Header */}
       <div className="header">
         <div className="header-left">
           <button className="menu-button" onClick={() => setIsSideNavOpen(!isSideNavOpen)}>
             ☰
           </button>
-          <div className="header-links">
-            <a href="/loan-application" className="header-link">
-              Apply for Loan
-            </a>
-            <a href="/emi-calculator" className="header-link">
-              EMI Calculator
-            </a>
-          </div>
         </div>
         <div className="header-right">
           <div className="user-profile" onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}>
@@ -236,4 +232,4 @@ const UserDashboard = () => {
   );
 };
 
-export default UserDashboard;
+export default AdminDashboard;
