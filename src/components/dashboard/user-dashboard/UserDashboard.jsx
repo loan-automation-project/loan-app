@@ -1,6 +1,5 @@
 
 
-
 // import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom"; // Import useNavigate
 // import "./UserDashboard.css"; // Import the CSS file
@@ -143,6 +142,10 @@
 //             </a>
 //             <a onClick={() => navigate("/emi-calculator")} className="header-link">
 //               EMI Calculator
+//             </a>
+//             {/* Add Eligibility Criteria Link */}
+//             <a onClick={() => navigate("/eligibility")} className="header-link">
+//               Eligibility
 //             </a>
 //           </div>
 //         </div>
@@ -388,9 +391,12 @@ const UserDashboard = () => {
             <a onClick={() => navigate("/emi-calculator")} className="header-link">
               EMI Calculator
             </a>
-            {/* Add Eligibility Criteria Link */}
             <a onClick={() => navigate("/eligibility")} className="header-link">
               Eligibility
+            </a>
+            {/* Add FAQs Link */}
+            <a onClick={() => navigate("/faqs")} className="header-link">
+              FAQs
             </a>
           </div>
         </div>
