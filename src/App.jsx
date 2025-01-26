@@ -18,6 +18,9 @@ import Dashboard from './components/dashboard/Dashboard';
 import UserDashboard from './components/dashboard/user-dashboard/UserDashboard';
 import EmiCalculator from './components/emi-calculator/EmiCalculator';
 import AdminDashboard from './components/dashboard/admin-dashboard/AdminDashboard';
+import EligibilityCriteria from './components/eligibility/EligibilityCriteria';
+import FAQs from './components/Faqs/Faqs';
+import FaqPage from './components/Faqs/FaqPage';
 
 function App() {
 
@@ -50,6 +53,8 @@ function App() {
         <Route path="/user-dashboard" element={<UserDashboard />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/emi-calculator" element={<EmiCalculator />} />
+        <Route path="/eligibility" element={<EligibilityCriteria />} />
+        <Route path="/faqs" element={<FaqPage />} />
 
       </Routes>
     {/* </Router> */}
