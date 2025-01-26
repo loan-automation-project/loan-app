@@ -1,210 +1,4 @@
 /* 
-
-
-    .homepage-container {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
-    }
-    
-   
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #2c3e50;
-      color: white;
-      padding: 10px 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    
-    .header-left {
-      display: flex;
-      align-items: center;
-    }
-    
-    .nav-link {
-      color: white;
-      text-decoration: none;
-      margin-right: 20px;
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-    
-    .nav-link:hover {
-      color: #1abc9c;
-    }
-    
-    .header-right {
-      display: flex;
-      align-items: center;
-    }
-    
-    .header-button {
-      background-color: #1abc9c;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin-left: 10px;
-      cursor: pointer;
-      border-radius: 4px;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-    }
-    
-    .header-button:hover {
-      background-color: #16a085;
-    }
-    
-   
-    .main-content {
-      flex: 1;
-      padding: 20px;
-    }
-    
-    
-    .carousel-section {
-      width: 100%;
-      overflow: hidden;
-      margin-bottom: 40px;
-      position: relative;
-    }
-    
-    .carousel {
-      width: 100%;
-      height: 500px; 
-      position: relative;
-    }
-    
-    .carousel-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    
-    .carousel-text {
-      position: absolute;
-      top: 50%;
-      left: 20px;
-      transform: translateY(-50%);
-      color: white;
-      font-size: 24px;
-      font-weight: bold;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      max-width: 50%;
-    }
-    
-    .carousel-text p {
-      margin: 10px 0;
-      line-height: 1.5;
-    }
-    
-    
-    .how-it-works {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    
-    .how-it-works h2 {
-      color: #333;
-      margin-bottom: 20px;
-    }
-    
-    .steps-cards {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    
-    .step-card {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      flex: 1;
-      min-width: 200px;
-      max-width: 300px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .step-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-    
-    .step-card h3 {
-      color: #2c3e50;
-      margin-bottom: 10px;
-    }
-    
-    .step-card p {
-      color: #555;
-    }
-    
-    
-    .reasons-to-choose-us {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    
-    .reasons-to-choose-us h2 {
-      color: #333;
-      margin-bottom: 20px;
-    }
-    
-    .reasons-cards {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    
-    .reason-card {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      flex: 1;
-      min-width: 200px;
-      max-width: 300px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .reason-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-    
-    .reason-card h3 {
-      color: #2c3e50;
-      margin-bottom: 10px;
-    }
-    
-    .reason-card p {
-      color: #555;
-    }
-    
-   
-    .footer {
-      background-color: #2c3e50;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      margin-top: auto;
-    }
-  
-
-
-     */
-
-
-
-
      .user-dashboard {
       display: flex;
       flex-direction: column;
@@ -383,4 +177,222 @@
     
     .metric-card p {
       color: #555;
+    } */
+
+
+
+    .user-dashboard {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa; /* Light background for content area */
     }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #2c3e50;
+      color: white;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .menu-button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+    .header-links {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .header-link {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .header-link:hover {
+      color: #1abc9c;
+    }
+    
+    .header-right {
+      display: flex;
+      align-items: center;
+    }
+    
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .profile-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover; /* Ensures proper aspect ratio */
+      border: 2px solid #1abc9c;
+    }
+    
+    .user-info {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .user-name {
+      font-weight: bold;
+    }
+    
+    .user-role {
+      font-size: 14px;
+      color: #ccc;
+    }
+    
+    .profile-dropdown {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+    }
+    
+    .logout-button {
+      background: none;
+      border: none;
+      padding: 10px 20px;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .logout-button:hover {
+      background-color: #f5f5f5;
+    }
+    
+    .side-nav {
+      width: 250px;
+      height: 100vh;
+      background-color: #2c3e50;
+      color: white;
+      position: fixed;
+      top: 0;
+      left: -250px;
+      transition: left 0.3s ease;
+      z-index: 100;
+    }
+    
+    .side-nav.open {
+      left: 0;
+    }
+    
+    .side-nav h2 {
+      padding: 20px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      border-bottom: 1px solid #1abc9c;
+    }
+    
+    .side-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .side-nav li {
+      padding: 15px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .side-nav li:hover {
+      background-color: #1abc9c;
+      color: white;
+    }
+    
+    .side-nav li.active {
+      background-color: #16a085;
+      color: white;
+    }
+    
+    .content {
+      margin-left: 0;
+      padding: 20px;
+      transition: margin-left 0.3s ease;
+      background-color: #f8f9fa;
+    }
+    
+    .side-nav.open + .content {
+      margin-left: 250px;
+    }
+    
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .metric-card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .metric-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .metric-card h3 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    
+    .metric-card p {
+      color: #555;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    
+    @media (max-width: 768px) {
+      .header-links {
+        display: none; /* Hide header links for smaller screens */
+      }
+    
+      .side-nav {
+        width: 200px; /* Narrower side nav for smaller screens */
+      }
+    
+      .profile-image {
+        width: 35px;
+        height: 35px;
+      }
+    
+      .metric-card {
+        padding: 15px;
+      }
+    }
+    

@@ -1,4 +1,6 @@
 
+
+
 // import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom"; // Import useNavigate
 // import "./UserDashboard.css"; // Import the CSS file
@@ -136,10 +138,10 @@
 //             ☰
 //           </button>
 //           <div className="header-links">
-//             <a href="/loan-application" className="header-link">
+//             <a onClick={() => navigate("/loan-application")} className="header-link">
 //               Apply for Loan
 //             </a>
-//             <a href="/emi-calculator" className="header-link">
+//             <a onClick={() => navigate("/emi-calculator")} className="header-link">
 //               EMI Calculator
 //             </a>
 //           </div>
@@ -240,7 +242,6 @@
 // };
 
 // export default UserDashboard;
-
 
 
 
@@ -386,6 +387,10 @@ const UserDashboard = () => {
             </a>
             <a onClick={() => navigate("/emi-calculator")} className="header-link">
               EMI Calculator
+            </a>
+            {/* Add Eligibility Criteria Link */}
+            <a onClick={() => navigate("/eligibility")} className="header-link">
+              Eligibility
             </a>
           </div>
         </div>
