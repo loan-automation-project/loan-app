@@ -1,6 +1,6 @@
 
-
 // import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom"; // Import useNavigate
 // import "./UserDashboard.css"; // Import the CSS file
 // import User from "../../../assets/pictures/User.jpg";
 
@@ -8,6 +8,7 @@
 //   const [activeSection, setActiveSection] = useState("dashboard");
 //   const [isSideNavOpen, setIsSideNavOpen] = useState(false); // State to manage side nav visibility
 //   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false); // State to manage profile dropdown
+//   const navigate = useNavigate(); // Initialize useNavigate
 
 //   // Sample data for the dashboard
 //   const dashboardData = {
@@ -26,7 +27,8 @@
 
 //   // Handle logout
 //   const handleLogout = () => {
-//     alert("Logged out successfully!"); // Replace with actual logout logic
+//     // Redirect to the home page
+//     navigate("/"); // Replace "/" with the path to your home page
 //   };
 
 //   // Render the main content based on the active section
@@ -379,10 +381,10 @@ const UserDashboard = () => {
             ☰
           </button>
           <div className="header-links">
-            <a href="/loan-application" className="header-link">
+            <a onClick={() => navigate("/loan-application")} className="header-link">
               Apply for Loan
             </a>
-            <a href="/emi-calculator" className="header-link">
+            <a onClick={() => navigate("/emi-calculator")} className="header-link">
               EMI Calculator
             </a>
           </div>
