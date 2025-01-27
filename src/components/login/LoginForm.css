@@ -1,3 +1,102 @@
+/* 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f4f8;
+}
+
+.login-form-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.login-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login-form .form-group {
+  margin-bottom: 15px;
+}
+
+.login-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.2);
+}
+
+.login-button {
+  width: 100%;
+  padding: 8px; 
+  font-size: 14px; 
+  font-weight: bold;
+  color: white;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 30px; 
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #45a049;
+}
+
+.login-button:active {
+  background-color: #3e8e41;
+}
+
+
+.register-link-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.register-link {
+  color: #4caf50;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */
+
+
 
 body {
   font-family: Arial, sans-serif;
@@ -51,14 +150,15 @@ body {
 
 .login-button {
   width: 100%;
-  padding: 8px; /* Reduced padding for smaller size */
-  font-size: 14px; /* Smaller font size */
+  padding: 10px;
+  font-size: 16px;
   font-weight: bold;
   color: white;
   background-color: #4caf50;
   border: none;
-  border-radius: 30px; /* Increased border-radius for more curved edges */
+  border-radius: 30px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .login-button:hover {
@@ -69,23 +169,31 @@ body {
   background-color: #3e8e41;
 }
 
-/* Register Link Styling */
-.register-link-container {
+.link-container {
   text-align: center;
   margin-top: 20px;
 }
 
+.admin-login-link,
 .register-link {
   color: #4caf50;
   cursor: pointer;
   font-size: 14px;
+  text-decoration: none;
 }
 
+.admin-login-link:hover,
 .register-link:hover {
   text-decoration: underline;
 }
 
-/* Animation */
+.error-message {
+  color: red;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
