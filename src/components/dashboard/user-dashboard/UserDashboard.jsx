@@ -251,7 +251,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./UserDashboard.css"; // Import the CSS file
-import User from "../../../assets/pictures/User.jpg";
 
 const UserDashboard = () => {
   const [activeSection, setActiveSection] = useState("dashboard");
@@ -267,17 +266,22 @@ const UserDashboard = () => {
     totalRevenue: "$250,000",
   };
 
-  // Sample logged-in user data
+  // Get logged-in user data from localStorage
+  const username = localStorage.getItem('username') || 'Guest';
+
+  // Updated loggedInUser object
   const loggedInUser = {
-    name: "Angela",
+    name: username, // Use the username from localStorage instead of "Angela"
     role: "User",
-    profileImage: User, // Placeholder image URL
+    profileImage: "https://cdn-icons-png.flaticon.com/512/0/93.png" // Default profile image
   };
 
   // Handle logout
   const handleLogout = () => {
-    // Redirect to the home page
-    navigate("/"); // Replace "/" with the path to your home page
+    localStorage.removeItem('token');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('username');
+    navigate("/");
   };
 
   // Render the main content based on the active section

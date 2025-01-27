@@ -191,7 +191,7 @@ function LoginForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8090/api/auth/login/user', {
+      const response = await fetch('http://localhost:8060/api/auth/login/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -210,6 +210,7 @@ function LoginForm() {
       const token = await response.text();
       localStorage.setItem('token', token);
       localStorage.setItem('userRole', 'ROLE_USER');
+      localStorage.setItem('username', username);
       
       navigate('/user-dashboard');
       

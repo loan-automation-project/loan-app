@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for page redirection
 import './RegisterForm.css'; // Import the CSS file for styling
@@ -16,6 +15,7 @@ function RegisterForm() {
     age: '',
     password: '',
     confirmPassword: '',
+    name: '',
   });
 
   const handleChange = (e) => {
@@ -23,9 +23,44 @@ function RegisterForm() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Registering user with data:', formData);
+    try {
+      // Create the request body with the exact structure the backend expects
+      const requestBody = {
+        name: formData.name,  // Add separate name field
+        username: formData.name, // Use name as username
+        password: formData.password,
+        email: formData.email,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        fullName: `${formData.firstName} ${formData.lastName}`,
+        mobileNumber: formData.mobileNo,
+        gender: formData.gender,
+        age: parseInt(formData.age, 10)
+      };
+
+      console.log('Sending registration data:', requestBody); // Debug log
+
+      const response = await fetch('http://localhost:8060/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      });
+
+      if (response.ok) {
+        alert('Registration successful! Please login.');
+        navigate('/login');
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Registration failed');
+      }
+    } catch (error) {
+      console.error('Registration error:', error);
+      alert('Registration failed: ' + (error.message || 'Unknown error occurred'));
+    }
   };
 
   const handleCancel = () => {
@@ -39,6 +74,7 @@ function RegisterForm() {
       age: '',
       password: '',
       confirmPassword: '',
+      name: '',
     });
   };
 
@@ -48,12 +84,24 @@ function RegisterForm() {
       <p className="mandatory-text">* All fields are mandatory</p>
       <form onSubmit={handleSubmit} className="register-form">
         <div className="form-group">
+          <label htmlFor="name">Username:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name || ''}
+            onChange={handleChange}
+            required
+            placeholder="Enter your username"
+          />
+        </div>
+        <div className="form-group">
           <label htmlFor="firstName">First Name:</label>
           <input
             type="text"
             id="firstName"
             name="firstName"
-            value={formData.firstName}
+            value={formData.firstName || ''}
             onChange={handleChange}
             placeholder="Enter your first name"
             required
