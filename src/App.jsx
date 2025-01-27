@@ -21,6 +21,7 @@ import AdminDashboard from './components/dashboard/admin-dashboard/AdminDashboar
 import EligibilityCriteria from './components/eligibility/EligibilityCriteria';
 import FAQs from './components/Faqs/Faqs';
 import FaqPage from './components/Faqs/FaqPage';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
 
@@ -50,8 +51,16 @@ function App() {
         <Route path="/admin-login" element={<AdminPage />} />
         <Route path="/loan-application" element={<LoanApplicationForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/user-dashboard" element={<UserDashboard />} />
-        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/user-dashboard" element={
+          <ProtectedRoute allowedRole="ROLE_USER">
+            <UserDashboard />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin-dashboard" element={
+          <ProtectedRoute allowedRole="ROLE_ADMIN">
+            <AdminDashboard />
+          </ProtectedRoute>
+        } />
         <Route path="/emi-calculator" element={<EmiCalculator />} />
         <Route path="/eligibility" element={<EligibilityCriteria />} />
         <Route path="/faqs" element={<FaqPage />} />
