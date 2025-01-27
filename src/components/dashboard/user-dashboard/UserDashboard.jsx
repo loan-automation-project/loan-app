@@ -259,25 +259,30 @@ const UserDashboard = () => {
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false); // State to manage profile dropdown
   const navigate = useNavigate(); // Initialize useNavigate
 
+  // Get logged-in user data from localStorage
+  const username = localStorage.getItem('username') || 'Guest';
+
+  // Updated loggedInUser object
+  const loggedInUser = {
+    name: username, // Use the username from localStorage instead of "Angela"
+    role: "User",
+    profileImage: "https://cdn-icons-png.flaticon.com/512/0/93.png" // Default profile image
+  };
+
+  // Handle logout
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('username');
+    navigate("/");
+  };
+
   // Sample data for the dashboard
   const dashboardData = {
     totalLoans: 125,
     activeLoans: 85,
     overdueLoans: 12,
     totalRevenue: "$250,000",
-  };
-
-  // Sample logged-in user data
-  const loggedInUser = {
-    name: "Angela",
-    role: "User",
-    profileImage: User, // Placeholder image URL
-  };
-
-  // Handle logout
-  const handleLogout = () => {
-    // Redirect to the home page
-    navigate("/"); // Replace "/" with the path to your home page
   };
 
   // Render the main content based on the active section

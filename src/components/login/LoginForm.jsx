@@ -192,6 +192,7 @@ function LoginForm() {
 
     try {
       const response = await fetch('http://localhost:8060/api/auth/login/user', {
+      const response = await fetch('http://localhost:8060/api/auth/login/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

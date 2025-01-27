@@ -59,30 +59,37 @@
 
 
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import User from "../../../../assets/pictures/User.jpg"; // Adjust the path as needed
-import "./Header.css"; // Import the CSS file for styling
+import "./Header.css";
+
+// Use online URLs for profile images
+const defaultImages = {
+  male: "https://cdn-icons-png.flaticon.com/512/0/93.png",
+  female: "https://cdn-icons-png.flaticon.com/512/0/89.png"
+};
 
 const Header = () => {
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
-  // Sample logged-in user data
-  const loggedInUser = {
-    name: "Angela",
-    role: "User",
-    profileImage: User, // Placeholder image URL
+  // Get user data from localStorage
+  const userData = JSON.parse(localStorage.getItem('userData') || '{"gender": "male"}');
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('userData');
+    navigate("/");
   };
 
-  // Handle logout
-  const handleLogout = () => {
-    navigate("/"); // Redirect to the home page
+  // Get default profile image based on gender
+  const getProfileImage = () => {
+    return userData.gender?.toLowerCase() === 'female' ? defaultImages.female : defaultImages.male;
   };
 
   return (
     <div className="header">
-      {/* Back Button */}
       <div className="header-left">
         <button className="back-button" onClick={() => navigate("/user-dashboard")}>
           &larr; Back
@@ -92,10 +99,10 @@ const Header = () => {
       {/* User Profile */}
       <div className="header-right">
         <div className="user-profile" onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}>
-          <img src={loggedInUser.profileImage} alt="Profile" className="profile-image" />
+          <img src={getProfileImage()} alt="Profile" className="profile-image" />
           <div className="user-info">
-            <span className="user-name">{loggedInUser.name}</span>
-            <span className="user-role">{loggedInUser.role}</span>
+            <span className="user-name">{userData.username || 'Guest'}</span>
+            <span className="user-role">User</span>
           </div>
           {/* Profile Dropdown */}
           {isProfileDropdownOpen && (

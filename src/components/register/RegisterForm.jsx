@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for page redirection
 import './RegisterForm.css'; // Import the CSS file for styling
@@ -10,6 +9,7 @@ function RegisterForm() {
     firstName: '',
     lastName: '',
     fullName: '',
+    username: '',
     email: '',
     mobileNo: '',
     gender: '',
@@ -23,9 +23,38 @@ function RegisterForm() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Registering user with data:', formData);
+    try {
+      const response = await fetch('http://localhost:8060/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          password: formData.password,
+          email: formData.email,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          fullName: formData.fullName,
+          mobileNo: formData.mobileNo,
+          gender: formData.gender,
+          age: parseInt(formData.age)
+        }),
+      });
+
+      if (response.ok) {
+        alert('Registration successful!');
+        navigate('/login');
+      } else {
+        const errorData = await response.json();
+        alert(`Registration failed: ${errorData.message || 'Please try again'}`);
+      }
+    } catch (error) {
+      console.error('Registration error:', error);
+      alert('Registration failed: Server error');
+    }
   };
 
   const handleCancel = () => {
@@ -33,6 +62,7 @@ function RegisterForm() {
       firstName: '',
       lastName: '',
       fullName: '',
+      username: '',
       email: '',
       mobileNo: '',
       gender: '',
@@ -68,6 +98,18 @@ function RegisterForm() {
             value={formData.lastName}
             onChange={handleChange}
             placeholder="Enter your last name"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            placeholder="Enter your username"
             required
           />
         </div>
