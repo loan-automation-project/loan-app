@@ -182,7 +182,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import './LoginForm.css';
 
 function LoginForm() {
-  const [username, setUsername] = useState(''); // Replace email with username
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -191,44 +191,44 @@ function LoginForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8060/api/auth/login/user', {
-      const response = await fetch('http://localhost:8060/api/auth/login/user', {
+      const response = await fetch('http://localhost:8090/api/auth/login/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }), // Send username and password to the backend
+        body: JSON.stringify({ 
+          name: username,
+          password: password
+        }),
       });
 
       if (!response.ok) {
-        throw new Error('Invalid username or password');
+        const errorData = await response.text();
+        throw new Error(errorData || 'Login failed');
       }
 
-      const data = await response.json(); // Parse the JSON response
-      console.log('Login successful:', data);
-
-      // Save the token (if any) to localStorage
-      if (data.token) {
-        localStorage.setItem('token', data.token); // Store the token for future requests
-      }
-
-      // Redirect to the dashboard or home page
-      navigate('/dashboard'); // Use your desired route
+      const token = await response.text();
+      localStorage.setItem('token', token);
+      localStorage.setItem('userRole', 'ROLE_USER');
+      localStorage.setItem('username', username);
+      
+      navigate('/user-dashboard');
+      
     } catch (error) {
       console.error('Error during login:', error);
-      setError('Invalid username or password. Please try again.'); // Set error message
+      setError(error.message);
     }
   };
 
   return (
     <div className="login-form-container">
       <h2 className="login-title">User Login</h2>
-      {error && <p className="error-message">{error}</p>} {/* Display error message */}
+      {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit} className="login-form">
         <div className="form-group">
-          <label htmlFor="username">Username:</label> {/* Replace email with username */}
+          <label htmlFor="username">Username:</label>
           <input
-            type="text" // Change type to "text"
+            type="text"
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
