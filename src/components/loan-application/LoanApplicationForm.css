@@ -160,3 +160,100 @@
 } 
 
 
+
+
+
+
+
+
+/* LoanApplicationForm.css */
+/* .loan-application-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.profile-section {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.loan-application-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.loan-application-form h2 {
+  margin-bottom: 20px;
+}
+
+.loan-application-form label {
+  font-weight: bold;
+}
+
+.loan-application-form input,
+.loan-application-form select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.array-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.next-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+} */

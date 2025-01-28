@@ -22,6 +22,7 @@ import EligibilityCriteria from './components/eligibility/EligibilityCriteria';
 import Faqs from './components/Faqs/Faqs';
 import FaqPage from './components/Faqs/FaqPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import Documents from './components/loan-application/Documents';
 
 function App() {
 
@@ -69,6 +70,7 @@ function App() {
         <Route path="/emi-calculator" element={<EmiCalculator />} />
         <Route path="/eligibility" element={<EligibilityCriteria />} />
         <Route path="/faqs" element={<FaqPage />} />
+        <Route path="/documents" element={<Documents />} />
 
       </Routes>
     {/* </Router> */}
