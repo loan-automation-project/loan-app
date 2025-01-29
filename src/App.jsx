@@ -23,6 +23,9 @@ import Faqs from './components/Faqs/Faqs';
 import FaqPage from './components/Faqs/FaqPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Documents from './components/loan-application/Documents';
+import PendingApplications from './components/dashboard/admin-dashboard/PendingApplications';
+import ApplicantDetails from './components/dashboard/admin-dashboard/ApplicantDetails';
+import Approve from './components/dashboard/admin-dashboard/Approve';
 
 function App() {
 
@@ -71,6 +74,9 @@ function App() {
         <Route path="/eligibility" element={<EligibilityCriteria />} />
         <Route path="/faqs" element={<FaqPage />} />
         <Route path="/documents" element={<Documents />} />
+        <Route path="/pending-applications" element={<PendingApplications />} />
+        <Route path="/applicant-details" element={<ApplicantDetails />} />
+        <Route path="/approve" element={<Approve />} />
 
       </Routes>
     {/* </Router> */}
