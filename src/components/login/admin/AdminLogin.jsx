@@ -12,7 +12,7 @@ function AdminLogin() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8090/api/auth/login/admin', {
+      const response = await fetch('http://localhost:8060/api/auth/login/admin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
