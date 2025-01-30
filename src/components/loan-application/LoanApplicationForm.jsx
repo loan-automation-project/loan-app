@@ -94,7 +94,7 @@ const LoanApplicationForm = () => {
     };
 
     // Use fetch to send the POST request
-    fetch("http://localhost:1092/application", {
+    fetch("http://localhost:8060/application", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
