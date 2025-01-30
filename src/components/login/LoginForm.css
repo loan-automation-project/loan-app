@@ -97,7 +97,7 @@ body {
 } */
 
 
-
+/* 
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -177,6 +177,117 @@ body {
 .admin-login-link,
 .register-link {
   color: #4caf50;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.admin-login-link:hover,
+.register-link:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */
+
+
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f4f8;
+}
+
+.login-form-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.login-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login-form .form-group {
+  margin-bottom: 15px;
+}
+
+.login-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #008000;
+  box-shadow: 0 0 4px rgba(0, 128, 0, 0.2);
+}
+
+/* Updated Login Page Button */
+.login-page-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #008000;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-page-button:hover {
+  background-color: #006400;
+}
+
+.login-page-button:active {
+  background-color: #004d00;
+}
+
+.link-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.admin-login-link,
+.register-link {
+  color: #008000;
   cursor: pointer;
   font-size: 14px;
   text-decoration: none;

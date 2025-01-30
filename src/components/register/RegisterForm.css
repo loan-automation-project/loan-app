@@ -55,7 +55,7 @@
     gap: 10px;
 }
 
-.register-button,
+.register-button-page,
 .cancel-button {
     flex: 1;
     padding: 12px;
@@ -67,11 +67,11 @@
     cursor: pointer;
 }
 
-.register-button {
+.register-button-page {
     background-color: #4caf50;
 }
 
-.register-button:hover {
+.register-button-page:hover {
     background-color: #45a049;
 }
 

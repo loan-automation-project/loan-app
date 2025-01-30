@@ -210,7 +210,7 @@ function RegisterForm() {
           />
         </div>
         <div className="button-group">
-          <button type="submit" className="register-button">
+          <button type="submit" className="register-button-page">
             Register
           </button>
           <button type="button" className="cancel-button" onClick={handleCancel}>
@@ -244,6 +244,7 @@ function RegisterForm() {
 }
 
 export default RegisterForm;
+
 
 
 
