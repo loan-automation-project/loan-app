@@ -1302,6 +1302,215 @@
 
 
 
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import "./LoanApplicationForm.css";
+
+// const Documents = () => {
+//   const [formData, setFormData] = useState({
+//     identity_proof_type: "",
+//     identity_proof_file: null,
+//     pan_card_file: null,
+//     income_proof_file: null,
+//     bank_statements_file: null,
+//     is_employee: "",
+//     employment_proof_file: null,
+//     picture_file: null,
+//     loan_specific_documents_file: null,
+//     asset_type: "",
+//     asset_document_file: null,
+//   });
+
+//   const navigate = useNavigate();
+  
+//   // Add state for tracking upload status
+//   const [uploadStatus, setUploadStatus] = useState({});
+
+//   const handleChange = (e) => {
+//     const { name, value, type, files } = e.target;
+//     setFormData({
+//       ...formData,
+//       [name]: type === "file" ? files[0] : value,
+//     });
+//   };
+
+//   const handleUpload = async (fileName) => {
+//     const file = formData[fileName];
+//     if (!file) {
+//       alert("Please select a file first");
+//       return;
+//     }
+
+//     const formDataToSend = new FormData();
+//     formDataToSend.append("file", file);
+//     formDataToSend.append("name", file.name);
+//     formDataToSend.append("type", fileName); // Using the field name as document type
+//     formDataToSend.append("loanId", "1"); // You'll need to replace this with actual loan ID
+
+//     setUploadStatus(prev => ({ ...prev, [fileName]: 'uploading' }));
+
+//     try {
+//       const response = await fetch("http://localhost:1095/documents/upload", {
+//         method: "POST",
+//         body: formDataToSend,
+//       });
+      
+//       if (!response.ok) {
+//         throw new Error("File upload failed");
+//       }
+      
+//       setUploadStatus(prev => ({ ...prev, [fileName]: 'success' }));
+//       alert(`${fileName} uploaded successfully!`);
+//     } catch (error) {
+//       setUploadStatus(prev => ({ ...prev, [fileName]: 'error' }));
+//       alert(`Error uploading ${fileName}: ${error.message}`);
+//     }
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+    
+//     // Check if all required files have been uploaded
+//     const requiredFiles = [
+//       'identity_proof_file',
+//       'pan_card_file',
+//       'income_proof_file',
+//       'bank_statements_file',
+//       'picture_file',
+//       'asset_document_file'
+//     ];
+
+//     const missingFiles = requiredFiles.filter(
+//       file => !uploadStatus[file] || uploadStatus[file] !== 'success'
+//     );
+
+//     if (missingFiles.length > 0) {
+//       alert(`Please upload all required documents: ${missingFiles.join(', ')}`);
+//       return;
+//     }
+
+//     // Proceed with form submission
+//     console.log("All documents uploaded, proceeding with submission");
+//     // Add your final form submission logic here
+//   };
+
+//   const getUploadButtonStyle = (fileName) => {
+//     const status = uploadStatus[fileName];
+//     if (status === 'success') {
+//       return "bg-green-500 hover:bg-green-600";
+//     } else if (status === 'error') {
+//       return "bg-red-500 hover:bg-red-600";
+//     } else if (status === 'uploading') {
+//       return "bg-yellow-500 hover:bg-yellow-600";
+//     }
+//     return "bg-blue-500 hover:bg-blue-600";
+//   };
+
+//   const renderFileInput = (fileName, label, required = true) => (
+//     <div className="mb-4">
+//       <label>{label}:</label>
+//       <div className="flex gap-2 items-center">
+//         <input 
+//           type="file" 
+//           name={fileName} 
+//           onChange={handleChange} 
+//           required={required}
+//           className="flex-1"
+//         />
+//         <button 
+//           type="button" 
+//           onClick={() => handleUpload(fileName)}
+//           className={`text-white px-4 py-2 rounded ${getUploadButtonStyle(fileName)}`}
+//           disabled={uploadStatus[fileName] === 'uploading'}
+//         >
+//           {uploadStatus[fileName] === 'success' ? '✓ Uploaded' : 
+//            uploadStatus[fileName] === 'uploading' ? 'Uploading...' : 'Upload'}
+//         </button>
+//       </div>
+//     </div>
+//   );
+
+//   return (
+//     <div className="loan-application-container">
+//       <div className="header">
+//         <button className="back-button" onClick={() => navigate("/user-dashboard")}>
+//           &larr; Back
+//         </button>
+//       </div>
+
+//       <form className="loan-application-form" onSubmit={handleSubmit}>
+//         <h2>Documents</h2>
+
+//         <div className="mb-4">
+//           <label>Identity Proof:</label>
+//           <select
+//             name="identity_proof_type"
+//             value={formData.identity_proof_type}
+//             onChange={handleChange}
+//             required
+//             className="w-full p-2 mb-2 border rounded"
+//           >
+//             <option value="">Select</option>
+//             <option value="Aadhar">Aadhar</option>
+//             <option value="Passport">Passport</option>
+//           </select>
+//           {renderFileInput("identity_proof_file", "Identity Proof Document")}
+//         </div>
+
+//         {renderFileInput("pan_card_file", "PAN Card")}
+//         {renderFileInput("income_proof_file", "Income Proof")}
+//         {renderFileInput("bank_statements_file", "Bank Statements")}
+        
+//         <div className="mb-4">
+//           <label>Are you an employee?</label>
+//           <select 
+//             name="is_employee" 
+//             value={formData.is_employee} 
+//             onChange={handleChange} 
+//             required
+//             className="w-full p-2 mb-2 border rounded"
+//           >
+//             <option value="">Select</option>
+//             <option value="yes">Yes</option>
+//             <option value="no">No</option>
+//           </select>
+//           {formData.is_employee === "yes" && 
+//             renderFileInput("employment_proof_file", "Employment Proof")}
+//         </div>
+
+//         {renderFileInput("picture_file", "Picture")}
+//         {renderFileInput("loan_specific_documents_file", "Loan-Specific Documents")}
+
+//         <div className="mb-4">
+//           <label>Asset Type:</label>
+//           <input 
+//             type="text" 
+//             name="asset_type" 
+//             value={formData.asset_type} 
+//             onChange={handleChange} 
+//             required 
+//             className="w-full p-2 mb-2 border rounded"
+//           />
+//           {renderFileInput("asset_document_file", "Asset Document")}
+//         </div>
+
+//         <button type="submit" className="submit-button">
+//           Submit
+//         </button>
+//       </form>
+
+//       <footer className="footer">
+//         <p>&copy; 2023 Loan Management System. All rights reserved.</p>
+//       </footer>
+//     </div>
+//   );
+// };
+
+// export default Documents;
+
+
+
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoanApplicationForm.css";
@@ -1322,8 +1531,6 @@ const Documents = () => {
   });
 
   const navigate = useNavigate();
-  
-  // Add state for tracking upload status
   const [uploadStatus, setUploadStatus] = useState({});
 
   const handleChange = (e) => {
@@ -1344,8 +1551,8 @@ const Documents = () => {
     const formDataToSend = new FormData();
     formDataToSend.append("file", file);
     formDataToSend.append("name", file.name);
-    formDataToSend.append("type", fileName); // Using the field name as document type
-    formDataToSend.append("loanId", "1"); // You'll need to replace this with actual loan ID
+    formDataToSend.append("type", fileName);
+    formDataToSend.append("loanId", "1");
 
     setUploadStatus(prev => ({ ...prev, [fileName]: 'uploading' }));
 
@@ -1370,7 +1577,6 @@ const Documents = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Check if all required files have been uploaded
     const requiredFiles = [
       'identity_proof_file',
       'pan_card_file',
@@ -1389,38 +1595,37 @@ const Documents = () => {
       return;
     }
 
-    // Proceed with form submission
     console.log("All documents uploaded, proceeding with submission");
-    // Add your final form submission logic here
   };
 
   const getUploadButtonStyle = (fileName) => {
     const status = uploadStatus[fileName];
+    const baseStyle = "text-white";
+    
     if (status === 'success') {
-      return "bg-green-500 hover:bg-green-600";
+      return `${baseStyle} bg-green-500 hover:bg-green-600`;
     } else if (status === 'error') {
-      return "bg-red-500 hover:bg-red-600";
+      return `${baseStyle} bg-red-500 hover:bg-red-600`;
     } else if (status === 'uploading') {
-      return "bg-yellow-500 hover:bg-yellow-600";
+      return `${baseStyle} bg-yellow-500`;
     }
-    return "bg-blue-500 hover:bg-blue-600";
+    return `${baseStyle} bg-blue-500 hover:bg-blue-600`;
   };
 
   const renderFileInput = (fileName, label, required = true) => (
-    <div className="mb-4">
+    <div className="form-field">
       <label>{label}:</label>
-      <div className="flex gap-2 items-center">
+      <div className="file-input-container">
         <input 
           type="file" 
           name={fileName} 
           onChange={handleChange} 
           required={required}
-          className="flex-1"
         />
         <button 
           type="button" 
           onClick={() => handleUpload(fileName)}
-          className={`text-white px-4 py-2 rounded ${getUploadButtonStyle(fileName)}`}
+          className={getUploadButtonStyle(fileName)}
           disabled={uploadStatus[fileName] === 'uploading'}
         >
           {uploadStatus[fileName] === 'success' ? '✓ Uploaded' : 
@@ -1441,14 +1646,13 @@ const Documents = () => {
       <form className="loan-application-form" onSubmit={handleSubmit}>
         <h2>Documents</h2>
 
-        <div className="mb-4">
+        <div className="form-field">
           <label>Identity Proof:</label>
           <select
             name="identity_proof_type"
             value={formData.identity_proof_type}
             onChange={handleChange}
             required
-            className="w-full p-2 mb-2 border rounded"
           >
             <option value="">Select</option>
             <option value="Aadhar">Aadhar</option>
@@ -1461,14 +1665,13 @@ const Documents = () => {
         {renderFileInput("income_proof_file", "Income Proof")}
         {renderFileInput("bank_statements_file", "Bank Statements")}
         
-        <div className="mb-4">
+        <div className="form-field">
           <label>Are you an employee?</label>
           <select 
             name="is_employee" 
             value={formData.is_employee} 
             onChange={handleChange} 
             required
-            className="w-full p-2 mb-2 border rounded"
           >
             <option value="">Select</option>
             <option value="yes">Yes</option>
@@ -1481,7 +1684,7 @@ const Documents = () => {
         {renderFileInput("picture_file", "Picture")}
         {renderFileInput("loan_specific_documents_file", "Loan-Specific Documents")}
 
-        <div className="mb-4">
+        <div className="form-field">
           <label>Asset Type:</label>
           <input 
             type="text" 
@@ -1489,12 +1692,11 @@ const Documents = () => {
             value={formData.asset_type} 
             onChange={handleChange} 
             required 
-            className="w-full p-2 mb-2 border rounded"
           />
           {renderFileInput("asset_document_file", "Asset Document")}
         </div>
 
-        <button type="submit" className="submit-button">
+        <button type="submit" className="submit-buttonn">
           Submit
         </button>
       </form>

@@ -263,7 +263,7 @@
 
 
 
-.loan-application-container {
+/* .loan-application-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -368,7 +368,7 @@
   font-size: 16px;
 }
 
-/* New styles for file input container */
+
 .file-upload-container {
   display: flex;
   align-items: center;
@@ -427,6 +427,155 @@
 
 .loan-application-form button[type="button"]:hover {
   background-color: #2980b9;
+}
+
+.footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #2c3e50;
+  color: white;
+  margin-top: auto;
+} */
+
+
+
+
+
+
+
+.loan-application-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c3e50;
+  color: white;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  color: #1abc9c;
+}
+
+.loan-application-form {
+  max-width: 800px;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.loan-application-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.loan-application-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.loan-application-form input,
+.loan-application-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* File input container styles */
+.file-input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.file-input-container input[type="file"] {
+  flex: 1;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.file-input-container button {
+  min-width: 100px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  background-color: #007bff;  /* Default blue color */
+}
+
+.file-input-container button:hover {
+  background-color: #0056b3;  /* Darker blue on hover */
+}
+
+.file-input-container button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Upload status button styles */
+.upload-success {
+  background-color: #28a745 !important;
+}
+
+.upload-error {
+  background-color: #dc3545 !important;
+}
+
+.upload-uploading {
+  background-color: #ffc107 !important;
+  color: #000 !important;
+}
+
+/* Form field spacing */
+.form-field {
+  margin-bottom: 20px;
+}
+
+/* Submit button */
+.submit-buttonn {
+  width: 100%;
+  padding: 12px;
+  background-color: #0dcfa8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.submit-buttonn:hover {
+  background-color: #16a085;
 }
 
 .footer {
