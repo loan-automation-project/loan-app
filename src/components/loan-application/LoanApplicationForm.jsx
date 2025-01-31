@@ -94,10 +94,13 @@ const LoanApplicationForm = () => {
     };
 
     // Use fetch to send the POST request
-    fetch("http://localhost:1092/application", {
+
+    const jwtToken = localStorage.getItem('token');
+    fetch("http://localhost:8060/application", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+         "Authorization": `Bearer ${jwtToken}`
       },
       body: JSON.stringify(formDataToSend),
     })
