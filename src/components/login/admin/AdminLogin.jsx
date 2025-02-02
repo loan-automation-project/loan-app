@@ -41,6 +41,7 @@ function AdminLogin() {
   };
 
   return (
+    <div>
     <div className="admin-login-container">
       <h2 className="admin-login-title">Admin Login</h2>
       {error && <p className="error-message">{error}</p>}
@@ -86,7 +87,10 @@ function AdminLogin() {
         {/* Register Link */}
         
       </div>
+      
     </div>
+    
+  </div>
   );
 }
 

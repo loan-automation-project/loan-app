@@ -100,7 +100,7 @@ const LoanApplicationForm = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-         "Authorization": `Bearer ${jwtToken}`
+        "Authorization": `Bearer ${jwtToken}`
       },
       body: JSON.stringify(formDataToSend),
     })
@@ -364,6 +364,9 @@ const LoanApplicationForm = () => {
           Next
         </button>
       </form>
+      <footer className="footer">
+        <p>&copy; 2025 Loan Management System. All rights reserved.</p>
+      </footer>
     </div>
   );
 };

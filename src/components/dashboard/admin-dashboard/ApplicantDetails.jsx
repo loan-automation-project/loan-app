@@ -234,7 +234,7 @@ const ApplicantDetails = () => {
           &larr; Back
         </button>
 
-        <div
+        {/* <div
           className="profile-section"
           onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
         >
@@ -250,7 +250,7 @@ const ApplicantDetails = () => {
               </button>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
 
       {/* Main Content */}
@@ -344,7 +344,7 @@ const ApplicantDetails = () => {
 
       {/* Footer */}
       <footer className="footer">
-        <p>&copy; 2023 Loan Management System. All rights reserved.</p>
+        <p>&copy; 2025 Loan Management System. All rights reserved.</p>
       </footer>
     </div>
   );

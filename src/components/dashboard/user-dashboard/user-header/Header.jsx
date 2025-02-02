@@ -90,14 +90,14 @@ const Header = () => {
       </div>
 
       {/* User Profile */}
-      <div className="header-right">
+      {/* <div className="header-right">
         <div className="user-profile" onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}>
           <img src={loggedInUser.profileImage} alt="Profile" className="profile-image" />
           <div className="user-info">
             <span className="user-name">{loggedInUser.name}</span>
             <span className="user-role">{loggedInUser.role}</span>
           </div>
-          {/* Profile Dropdown */}
+         
           {isProfileDropdownOpen && (
             <div className="profile-dropdown">
               <button className="logout-button" onClick={handleLogout}>
@@ -106,7 +106,7 @@ const Header = () => {
             </div>
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

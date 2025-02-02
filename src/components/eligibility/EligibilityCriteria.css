@@ -42,20 +42,12 @@
   /* EligibilityCriteria.css */
 
 /* EligibilityCriteria.css */
- .eligibility-criteria-container {
+ /* .eligibility-criteria-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #ddd;
-} */
 
 .back-button {
   background: none;
@@ -98,12 +90,119 @@
   max-width: 800px;
   margin: 0 auto;
   text-align: left;
+} */
+
+
+
+.back-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-/* .footer {
+.eligibility-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* .back-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+} */
+
+.main-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
   text-align: center;
-  padding: 10px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #ddd;
-  margin-top: auto;
-} */ 
+  margin: 0;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.intro-text {
+  color: #666;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.criteria-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-bottom: 2rem;
+}
+
+.criteria-card {
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.criteria-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.criteria-content {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.criteria-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.criteria-text {
+  flex: 1;
+}
+
+.criteria-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.criteria-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.footer-text {
+  text-align: center;
+  color: #666;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .criteria-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+}
