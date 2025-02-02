@@ -84,28 +84,36 @@ const LoanApplicationForm = () => {
       fullName: formData.fullName,
       dateOfBirth: formData.dateOfBirth,
       gender: formData.gender,
-      maritalStatus: formData.maritalStatus,  // Fix the key name
-      contactInfo: formData.contact_number,    // Fix the key name
+      maritalStatus: formData.maritalStatus,
+      contactInfo: formData.contact_number,
       address: formData.address,
-      annualSalary: formData.annualSalary,    // Include salary if needed
-      employmentDetails: formData.employement_details.map(detail => `${detail.employer_name}: ${detail.job_title}`), // Adjust to array of strings
-      references: formData.references.map(reference => `${reference.name}: ${reference.relation} - ${reference.contact_number}`), // Adjust to array of strings
+      annualSalary: formData.annualSalary,
+      employmentDetails: formData.employement_details.map(detail => `${detail.employer_name}: ${detail.job_title}`),
+      references: formData.references.map(reference => `${reference.name}: ${reference.relation} - ${reference.contact_number}`),
       loanAmount: formData.loanAmount,
     };
 
-    // Use fetch to send the POST request
+    // Get token from localStorage
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Please login first');
+      navigate('/login');
+      return;
+    }
 
-    const jwtToken = localStorage.getItem('token');
     fetch("http://localhost:8060/application", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${jwtToken}`
+        "Authorization": `Bearer ${token}`  // Add JWT token
       },
       body: JSON.stringify(formDataToSend),
     })
       .then((response) => {
         if (!response.ok) {
+          if (response.status === 401) {
+            throw new Error("Unauthorized. Please login again.");
+          }
           throw new Error("Failed to submit the loan application");
         }
         return response.json();
@@ -116,6 +124,11 @@ const LoanApplicationForm = () => {
       })
       .catch((error) => {
         console.error("There was an error submitting the loan application!", error);
+        if (error.message.includes("Unauthorized")) {
+          localStorage.removeItem('token');
+          navigate('/login');
+        }
+        alert(error.message);
       });
   };
 

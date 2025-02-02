@@ -1552,23 +1552,30 @@ const Documents = () => {
     formDataToSend.append("file", file);
     formDataToSend.append("name", file.name);
     formDataToSend.append("type", fileName);
-    formDataToSend.append("loanId", "1");
 
     setUploadStatus(prev => ({ ...prev, [fileName]: 'uploading' }));
 
     try {
-      const response = await fetch("http://localhost:1095/documents/upload", {
+      // Get token from localStorage
+      const token = localStorage.getItem('token');
+      
+      const response = await fetch("http://localhost:8060/documents/upload", {
         method: "POST",
+        headers: {
+          'Authorization': `Bearer ${token}`  // Add JWT token
+        },
         body: formDataToSend,
       });
       
       if (!response.ok) {
-        throw new Error("File upload failed");
+        const errorText = await response.text();
+        throw new Error(`File upload failed: ${errorText}`);
       }
       
       setUploadStatus(prev => ({ ...prev, [fileName]: 'success' }));
       alert(`${fileName} uploaded successfully!`);
     } catch (error) {
+      console.error('Upload error:', error);
       setUploadStatus(prev => ({ ...prev, [fileName]: 'error' }));
       alert(`Error uploading ${fileName}: ${error.message}`);
     }
