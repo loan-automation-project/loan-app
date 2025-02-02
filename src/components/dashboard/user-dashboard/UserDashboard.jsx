@@ -101,6 +101,7 @@ const UserDashboard = () => {
       case "transactions":
         return (
           <div className="main-content">
+            <h2>Transactions</h2>
             <Transaction />
           </div>
         );
