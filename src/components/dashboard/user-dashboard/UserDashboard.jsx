@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./UserDashboard.css"; // Import the CSS file
+import Transaction from "../../../components/transaction/Transaction.jsx";
 
 const UserDashboard = () => {
   const [activeSection, setActiveSection] = useState("dashboard");
@@ -101,7 +102,7 @@ const UserDashboard = () => {
         return (
           <div className="main-content">
             <h2>Transactions</h2>
-            <p>View and manage all transactions.</p>
+            <Transaction />
           </div>
         );
       default:
