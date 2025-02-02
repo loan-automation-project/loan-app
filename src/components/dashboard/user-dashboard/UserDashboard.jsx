@@ -14,7 +14,7 @@ const UserDashboard = () => {
     totalLoans: 125,
     activeLoans: 85,
     overdueLoans: 12,
-    totalRevenue: "$250,000",
+    totalRevenue: "Rs.250,000",
   };
 
   // Get logged-in user data from localStorage
@@ -56,7 +56,7 @@ const UserDashboard = () => {
                 <p>{dashboardData.overdueLoans}</p>
               </div>
               <div className="metric-card">
-                <h3>Total Revenue</h3>
+                <h3>Apporved Amount</h3>
                 <p>{dashboardData.totalRevenue}</p>
               </div>
             </div>
@@ -122,7 +122,7 @@ const UserDashboard = () => {
                 <p>{dashboardData.overdueLoans}</p>
               </div>
               <div className="metric-card">
-                <h3>Total Revenue</h3>
+                <h3>Approved Amount</h3>
                 <p>{dashboardData.totalRevenue}</p>
               </div>
             </div>

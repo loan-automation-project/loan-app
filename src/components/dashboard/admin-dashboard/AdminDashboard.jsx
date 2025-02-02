@@ -497,7 +497,7 @@ const AdminDashboard = () => {
     totalLoans: 125,
     activeLoans: 85,
     overdueLoans: 12,
-    totalRevenue: "$250,000",
+    totalRevenue: 3,
   };
 
   const loggedInUser = {
@@ -522,19 +522,19 @@ const AdminDashboard = () => {
             <h2>Dashboard Overview</h2>
             <div className="metrics">
               <div className="metric-card">
-                <h3>Total Loans</h3>
+                <h3>Total Applications</h3>
                 <p>{dashboardData.totalLoans}</p>
               </div>
               <div className="metric-card">
-                <h3>Active Loans</h3>
+                <h3>Approved</h3>
                 <p>{dashboardData.activeLoans}</p>
               </div>
               <div className="metric-card">
-                <h3>Overdue Loans</h3>
+                <h3>Pending</h3>
                 <p>{dashboardData.overdueLoans}</p>
               </div>
               <div className="metric-card">
-                <h3>Total Revenue</h3>
+                <h3>Rejected</h3>
                 <p>{dashboardData.totalRevenue}</p>
               </div>
             </div>
