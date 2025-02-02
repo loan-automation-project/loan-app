@@ -137,7 +137,7 @@ const LoanApplicationForm = () => {
         </button>
 
         {/* Profile Section */}
-        <div
+        {/* <div
           className="profile-section"
           onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
         >
@@ -153,7 +153,7 @@ const LoanApplicationForm = () => {
               </button>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
 
       {/* Loan Application Form */}

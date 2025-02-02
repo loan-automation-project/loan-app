@@ -59,7 +59,7 @@ const EMICalculator = () => {
         </button>
 
         {/* Profile Section */}
-        <div className="profile-section" onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}>
+        {/* <div className="profile-section" onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}>
           <img
             src="https://via.placeholder.com/40" // Placeholder image URL
             alt="Profile"
@@ -72,7 +72,7 @@ const EMICalculator = () => {
               </button>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
 
       {/* EMI Calculator Form */}
