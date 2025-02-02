@@ -26,6 +26,7 @@ import Documents from './components/loan-application/Documents';
 import PendingApplications from './components/dashboard/admin-dashboard/PendingApplications';
 import ApplicantDetails from './components/dashboard/admin-dashboard/ApplicantDetails';
 import Approve from './components/dashboard/admin-dashboard/Approve';
+import Transaction from './components/transaction/Transaction';
 
 function App() {
 
@@ -77,6 +78,7 @@ function App() {
         <Route path="/pending-applications" element={<PendingApplications />} />
         <Route path="/applicant-details" element={<ApplicantDetails />} />
         <Route path="/approve" element={<Approve />} />
+        <Route path="/transaction" element={<Transaction />} />
 
       </Routes>
     {/* </Router> */}
