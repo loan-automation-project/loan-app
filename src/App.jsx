@@ -18,7 +18,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import UserDashboard from './components/dashboard/user-dashboard/UserDashboard';
 import EmiCalculator from './components/emi-calculator/EmiCalculator';
 import AdminDashboard from './components/dashboard/admin-dashboard/AdminDashboard';
-import EligibilityCriteria from './components/eligibility/EligibilityCriteria';
+import EligibilityCriteria from './components/Eligibility/EligibilityCriteria';
 import Faqs from './components/Faqs/Faqs';
 import FaqPage from './components/Faqs/FaqPage';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -75,7 +75,7 @@ function App() {
         <Route path="/faqs" element={<FaqPage />} />
         <Route path="/documents" element={<Documents />} />
         <Route path="/pending-applications" element={<PendingApplications />} />
-        <Route path="/applicant-details" element={<ApplicantDetails />} />
+        <Route path="/applicant-details/:loanId" element={<ApplicantDetails />} />
         <Route path="/approve" element={<Approve />} />
 
       </Routes>
