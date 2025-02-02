@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -21,6 +22,7 @@ import AdminDashboard from './components/dashboard/admin-dashboard/AdminDashboar
 import EligibilityCriteria from './components/eligibility/EligibilityCriteria';
 import FAQs from './components/Faqs/Faqs';
 import FaqPage from './components/Faqs/FaqPage';
+import Transaction from './components/transaction/Transaction';
 
 function App() {
 
@@ -55,6 +57,8 @@ function App() {
         <Route path="/emi-calculator" element={<EmiCalculator />} />
         <Route path="/eligibility" element={<EligibilityCriteria />} />
         <Route path="/faqs" element={<FaqPage />} />
+        <Route path="/user-transaction" element={<Transaction />} />
+
 
       </Routes>
     {/* </Router> */}
