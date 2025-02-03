@@ -27,6 +27,7 @@ import PendingApplications from './components/dashboard/admin-dashboard/PendingA
 import ApplicantDetails from './components/dashboard/admin-dashboard/ApplicantDetails';
 import Approve from './components/dashboard/admin-dashboard/Approve';
 import Transaction from './components/transaction/Transaction';
+import LoanDetails from './components/dashboard/admin-dashboard/LoanDetails';
 
 function App() {
 
@@ -79,6 +80,8 @@ function App() {
         <Route path="/applicant-details/:loanId" element={<ApplicantDetails />} />
         <Route path="/approve" element={<Approve />} />
         <Route path="/transaction" element={<Transaction />} />
+        <Route path="/loan-details" element={<LoanDetails />} />
+       
 
       </Routes>
     {/* </Router> */}
