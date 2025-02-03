@@ -386,7 +386,7 @@ const PendingApplications = () => {
     try {
       setLoading(true);
       const jwtToken = localStorage.getItem('token');
-      const response = await fetch('http://localhost:1093/application/pending', {
+      const response = await fetch('http://localhost:8060/application/pending', {
         headers: {
           'Authorization': `Bearer ${jwtToken}`,
           'Content-Type': 'application/json'

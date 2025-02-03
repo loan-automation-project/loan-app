@@ -1552,23 +1552,29 @@ const Documents = () => {
     formDataToSend.append("file", file);
     formDataToSend.append("name", file.name);
     formDataToSend.append("type", fileName);
-    formDataToSend.append("loanId", "1");
+    // formDataToSend.append("loanId", "1");
 
     setUploadStatus(prev => ({ ...prev, [fileName]: 'uploading' }));
 
     try {
-      const response = await fetch("http://localhost:1095/documents/upload", {
+      const token= localStorage.getItem('token');
+      const response = await fetch("http://localhost:8060/documents/upload", {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         body: formDataToSend,
       });
       
       if (!response.ok) {
+        const errorText= await response.text();
         throw new Error("File upload failed");
       }
       
       setUploadStatus(prev => ({ ...prev, [fileName]: 'success' }));
       alert(`${fileName} uploaded successfully!`);
     } catch (error) {
+      console.error("Error uploading file:", error);
       setUploadStatus(prev => ({ ...prev, [fileName]: 'error' }));
       alert(`Error uploading ${fileName}: ${error.message}`);
     }

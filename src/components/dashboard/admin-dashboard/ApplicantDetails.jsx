@@ -537,7 +537,7 @@ const ApplicantDetails = () => {
     try {
       setLoading(true);
       const jwtToken = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:1093/application/${loanId}`, {
+      const response = await fetch(`http://localhost:8060/application/${loanId}`, {
         headers: {
           'Authorization': `Bearer ${jwtToken}`,
           'Content-Type': 'application/json'
@@ -574,9 +574,38 @@ const ApplicantDetails = () => {
     // Add your rejection logic here
   };
 
-  const handleDownload = () => {
-    alert(`Downloading documents for application ${loanId}`);
-    // Add your document download logic here
+  const handleDownload = async () => {
+    try {
+      const jwtToken = localStorage.getItem('token');
+      const response = await fetch(`http://localhost:8060/documents/download/${loanId}`, {
+        headers: {
+          'Authorization': `Bearer ${jwtToken}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to download documents');
+      }
+
+      // Convert the response to a blob
+      const blob = await response.blob();
+      
+      // Create a download link
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `loan_${loanId}_documents.zip`; // This matches your backend filename
+      document.body.appendChild(a);
+      a.click();
+      
+      // Cleanup
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+
+    } catch (error) {
+      console.error('Error downloading documents:', error);
+      alert('Failed to download documents: ' + error.message);
+    }
   };
 
   if (loading) {

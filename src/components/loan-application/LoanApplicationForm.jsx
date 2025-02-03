@@ -96,6 +96,12 @@ const LoanApplicationForm = () => {
     // Use fetch to send the POST request
 
     const jwtToken = localStorage.getItem('token');
+    if(!jwtToken){
+      alert('Please login first');
+      navigate('/login');
+      return;
+    }
+
     // fetch("http://localhost:1093/application", {
     fetch("http://localhost:8060/application", {
       method: "POST",
