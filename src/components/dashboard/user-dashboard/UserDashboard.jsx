@@ -1,132 +1,79 @@
-
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-import "./UserDashboard.css"; // Import the CSS file
-import Transaction from "../../../components/transaction/Transaction.jsx";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './UserDashboard.css';
+import Transaction from '../../../components/transaction/Transaction.jsx';
+import { apiUrl } from '../../../config/api';
 
 const UserDashboard = () => {
-  const [activeSection, setActiveSection] = useState("dashboard");
-  const [isSideNavOpen, setIsSideNavOpen] = useState(false); // State to manage side nav visibility
-  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false); // State to manage profile dropdown
-  const navigate = useNavigate(); // Initialize useNavigate
+  const [activeSection, setActiveSection] = useState('dashboard');
+  const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  const [stats, setStats] = useState({ totalApplications: 0, pendingApplications: 0, latestApplication: null });
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const username = localStorage.getItem('username') || 'User';
+  const hasDraft = Boolean(localStorage.getItem('loanApplicationDraft'));
 
-  // Sample data for the dashboard
-  const dashboardData = {
-    totalLoans: 125,
-    activeLoans: 85,
-    overdueLoans: 12,
-    totalRevenue: "Rs.250,000",
-  };
+  useEffect(() => {
+    const loadDashboard = async () => {
+      const token = localStorage.getItem('token');
+      try {
+        const headers = { Authorization: `Bearer ${token}`, 'X-Username': username };
+        const [totalResponse, pendingResponse, latestResponse] = await Promise.all([
+          fetch(apiUrl('/application/count'), { headers }),
+          fetch(apiUrl('/application/pending/count'), { headers }),
+          fetch(apiUrl('/application/latest'), { headers }),
+        ]);
 
-  // Get logged-in user data from localStorage
-  const username = localStorage.getItem('username') || 'Guest';
+        const totalApplications = totalResponse.ok ? await totalResponse.json() : 0;
+        const pendingApplications = pendingResponse.ok ? await pendingResponse.json() : 0;
+        const latestApplication = latestResponse.ok ? await latestResponse.json() : null;
+        setStats({ totalApplications, pendingApplications, latestApplication });
+      } catch (error) {
+        console.error('Unable to load dashboard data', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadDashboard();
+  }, [username]);
 
-  // Updated loggedInUser object
-  const loggedInUser = {
-    name: username, // Use the username from localStorage instead of "Angela"
-    role: "User",
-    profileImage: "https://cdn-icons-png.flaticon.com/512/0/93.png" // Default profile image
-  };
-
-  // Handle logout
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userRole');
     localStorage.removeItem('username');
-    navigate("/");
+    navigate('/');
   };
 
-  // Render the main content based on the active section
   const renderMainContent = () => {
     switch (activeSection) {
-      case "dashboard":
-        return (
-          <div className="main-content">
-            <h2>Dashboard Overview</h2>
-            <div className="metrics">
-              <div className="metric-card">
-                <h3>Total Loans</h3>
-                <p>{dashboardData.totalLoans}</p>
-              </div>
-              <div className="metric-card">
-                <h3>Active Loans</h3>
-                <p>{dashboardData.activeLoans}</p>
-              </div>
-              <div className="metric-card">
-                <h3>Overdue Loans</h3>
-                <p>{dashboardData.overdueLoans}</p>
-              </div>
-              <div className="metric-card">
-                <h3>Apporved Amount</h3>
-                <p>{dashboardData.totalRevenue}</p>
-              </div>
-            </div>
-          </div>
-        );
-      case "users":
-        return (
-          <div className="main-content">
-            <h2>Manage Users</h2>
-            <p>View and manage all users in the system.</p>
-          </div>
-        );
-      case "roles":
-        return (
-          <div className="main-content">
-            <h2>Manage Roles</h2>
-            <p>View and manage user roles and permissions.</p>
-          </div>
-        );
-      case "loan_applications":
-        return (
-          <div className="main-content">
-            <h2>Loan Applications</h2>
-            <p>View and process loan applications.</p>
-          </div>
-        );
-      case "loan_approvals":
-        return (
-          <div className="main-content">
-            <h2>Loan Approvals</h2>
-            <p>Review and approve loan applications.</p>
-          </div>
-        );
-      case "documents":
-        return (
-          <div className="main-content">
-            <h2>Documents</h2>
-            <p>Manage and view uploaded documents.</p>
-          </div>
-        );
-      case "transactions":
-        return (
-          <div className="main-content">
-            <h2>Transactions</h2>
-            <Transaction />
-          </div>
-        );
+      case 'transactions':
+        return <div className="main-content"><h2>Transactions</h2><Transaction /></div>;
+      case 'documents':
+        return <div className="main-content"><h2>Documents</h2><p>Upload and manage documents required for your loan application.</p></div>;
       default:
         return (
           <div className="main-content">
-            <h2>Dashboard Overview</h2>
-            <div className="metrics">
-              <div className="metric-card">
-                <h3>Total Loans</h3>
-                <p>{dashboardData.totalLoans}</p>
-              </div>
-              <div className="metric-card">
-                <h3>Active Loans</h3>
-                <p>{dashboardData.activeLoans}</p>
-              </div>
-              <div className="metric-card">
-                <h3>Overdue Loans</h3>
-                <p>{dashboardData.overdueLoans}</p>
-              </div>
-              <div className="metric-card">
-                <h3>Approved Amount</h3>
-                <p>{dashboardData.totalRevenue}</p>
-              </div>
+            <div className="dashboard-heading">
+              <div><p className="eyebrow">Welcome back</p><h2>{username}'s Dashboard</h2><p>Track your applications and continue your loan journey.</p></div>
+              <button onClick={() => navigate('/loan-application')}>Apply for Loan</button>
             </div>
+
+            <div className="metrics">
+              <div className="metric-card"><h3>Total Applications</h3><p>{loading ? '...' : stats.totalApplications}</p></div>
+              <div className="metric-card"><h3>Pending Applications</h3><p>{loading ? '...' : stats.pendingApplications}</p></div>
+              <div className="metric-card"><h3>Latest Loan</h3><p>{stats.latestApplication?.loanType || 'No applications'}</p></div>
+              <div className="metric-card"><h3>Latest Status</h3><p>{stats.latestApplication?.loanStatus || '—'}</p></div>
+            </div>
+
+            {hasDraft && <div className="dashboard-banner"><div><strong>Application draft saved</strong><p>You have an unfinished application. Resume it instead of starting again.</p></div><button onClick={() => navigate('/loan-application')}>Resume Draft</button></div>}
+
+            {stats.latestApplication && <div className="recent-card">
+              <h3>Latest Application</h3>
+              <div><span>Application ID</span><strong>#{stats.latestApplication.loanId}</strong></div>
+              <div><span>Loan Type</span><strong>{stats.latestApplication.loanType}</strong></div>
+              <div><span>Status</span><strong>{stats.latestApplication.loanStatus}</strong></div>
+            </div>}
           </div>
         );
     }
@@ -134,118 +81,35 @@ const UserDashboard = () => {
 
   return (
     <div className="user-dashboard">
-      {/* Header */}
       <div className="header">
         <div className="header-left">
-          <button className="menu-button" onClick={() => setIsSideNavOpen(!isSideNavOpen)}>
-            ☰
-          </button>
+          <button className="menu-button" onClick={() => setIsSideNavOpen(!isSideNavOpen)}>☰</button>
           <div className="header-links">
-            <a onClick={() => navigate("/loan-application")} className="header-link">
-              Apply for Loan
-            </a>
-            <a onClick={() => navigate("/emi-calculator")} className="header-link">
-              EMI Calculator
-            </a>
-            <a onClick={() => navigate("/eligibility")} className="header-link">
-              Eligibility
-            </a>
-            {/* Add FAQs Link */}
-            <a onClick={() => navigate("/faqs")} className="header-link">
-              FAQs
-            </a>
+            <button onClick={() => navigate('/loan-application')} className="header-link">Apply for Loan</button>
+            <button onClick={() => navigate('/emi-calculator')} className="header-link">EMI Calculator</button>
+            <button onClick={() => navigate('/eligibility')} className="header-link">Eligibility</button>
+            <button onClick={() => navigate('/faqs')} className="header-link">FAQs</button>
           </div>
         </div>
         <div className="header-right">
           <div className="user-profile" onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}>
-            <img src={loggedInUser.profileImage} alt="Profile" className="profile-image" />
-            <div className="user-info">
-              <span className="user-name">{loggedInUser.name}</span>
-              <span className="user-role">{loggedInUser.role}</span>
-            </div>
-            {/* Profile Dropdown */}
-            {isProfileDropdownOpen && (
-              <div className="profile-dropdown">
-                <button className="logout-button" onClick={handleLogout}>
-                  Logout
-                </button>
-              </div>
-            )}
+            <div className="user-info"><span className="user-name">{username}</span><span className="user-role">User</span></div>
+            {isProfileDropdownOpen && <div className="profile-dropdown"><button className="logout-button" onClick={handleLogout}>Logout</button></div>}
           </div>
         </div>
       </div>
 
-      {/* Side Navigation Bar */}
-      <div className={`side-nav ${isSideNavOpen ? "open" : ""}`}>
+      <div className={`side-nav ${isSideNavOpen ? 'open' : ''}`}>
         <h2>Loan Management</h2>
         <ul>
-          <li
-            className={activeSection === "dashboard" ? "active" : ""}
-            onClick={() => {
-              setActiveSection("dashboard");
-              setIsSideNavOpen(false); // Close side nav after selection
-            }}
-          >
-            Dashboard
-          </li>
-          <li
-            className={activeSection === "users" ? "active" : ""}
-            onClick={() => {
-              setActiveSection("users");
-              setIsSideNavOpen(false);
-            }}
-          >
-            Users
-          </li>
-          <li
-            className={activeSection === "roles" ? "active" : ""}
-            onClick={() => {
-              setActiveSection("roles");
-              setIsSideNavOpen(false);
-            }}
-          >
-            Roles
-          </li>
-          <li
-            className={activeSection === "loan_applications" ? "active" : ""}
-            onClick={() => {
-              setActiveSection("loan_applications");
-              setIsSideNavOpen(false);
-            }}
-          >
-            Loan Applications
-          </li>
-          <li
-            className={activeSection === "loan_approvals" ? "active" : ""}
-            onClick={() => {
-              setActiveSection("loan_approvals");
-              setIsSideNavOpen(false);
-            }}
-          >
-            Loan Approvals
-          </li>
-          <li
-            className={activeSection === "documents" ? "active" : ""}
-            onClick={() => {
-              setActiveSection("documents");
-              setIsSideNavOpen(false);
-            }}
-          >
-            Documents
-          </li>
-          <li
-            className={activeSection === "transactions" ? "active" : ""}
-            onClick={() => {
-              setActiveSection("transactions");
-              setIsSideNavOpen(false);
-            }}
-          >
-            Transactions
-          </li>
+          {['dashboard', 'documents', 'transactions'].map((section) => (
+            <li key={section} className={activeSection === section ? 'active' : ''} onClick={() => { setActiveSection(section); setIsSideNavOpen(false); }}>
+              {section === 'dashboard' ? 'Dashboard' : section[0].toUpperCase() + section.slice(1)}
+            </li>
+          ))}
         </ul>
       </div>
 
-      {/* Main Content Area */}
       <div className="content">{renderMainContent()}</div>
     </div>
   );
