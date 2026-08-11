@@ -1,174 +1,114 @@
+import React, { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './EMICalculator.css';
 
+const loanRates = { 'Home Loan': 8.5, 'Personal Loan': 11.5, 'Car Loan': 9.25, 'Gold Loan': 10.5 };
 
-import React, { useState } from "react";
-import "./EMICalculator.css"; // Import the CSS file
-
-const EMICalculator = () => {
-  const [loanAmount, setLoanAmount] = useState(0);
-  const [interestRate, setInterestRate] = useState(0);
-  const [loanTenure, setLoanTenure] = useState(0);
-  const [loanType, setLoanType] = useState("Home Loan");
+function EMICalculator() {
+  const [loanAmount, setLoanAmount] = useState('');
+  const [interestRate, setInterestRate] = useState(loanRates['Home Loan']);
+  const [loanTenure, setLoanTenure] = useState(60);
+  const [loanType, setLoanType] = useState('Home Loan');
   const [emiDetails, setEmiDetails] = useState([]);
-  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false); // State for profile dropdown
+  const navigate = useNavigate();
+
+  const summary = useMemo(() => {
+    if (!emiDetails.length) return null;
+    const emi = Number(emiDetails[0].emi);
+    const totalPayment = emi * emiDetails.length;
+    return { emi, totalPayment, totalInterest: totalPayment - Number(loanAmount) };
+  }, [emiDetails, loanAmount]);
 
   const calculateEMI = () => {
-    const principal = parseFloat(loanAmount);
-    const rate = parseFloat(interestRate) / 12 / 100; // Monthly interest rate
-    const tenure = parseFloat(loanTenure);
+    const principal = Number(loanAmount);
+    const monthlyRate = Number(interestRate) / 12 / 100;
+    const months = Number(loanTenure);
 
-    if (principal <= 0 || rate <= 0 || tenure <= 0) {
-      alert("Please enter valid values for Loan Amount, Interest Rate, and Loan Tenure.");
-      return;
+    if (principal <= 0 || monthlyRate <= 0 || months <= 0 || months > 360) return;
+
+    const emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) /
+      (Math.pow(1 + monthlyRate, months) - 1);
+
+    const schedule = [];
+    let remaining = principal;
+    for (let month = 1; month <= months; month += 1) {
+      const interest = remaining * monthlyRate;
+      const principalPaid = Math.min(emi - interest, remaining);
+      remaining = Math.max(0, remaining - principalPaid);
+      schedule.push({ month, emi, principalPaid, interestPaid: interest, remainingPrincipal: remaining });
     }
-
-    const emi =
-      (principal * rate * Math.pow(1 + rate, tenure)) /
-      (Math.pow(1 + rate, tenure) - 1);
-
-    const emiArray = [];
-    let remainingPrincipal = principal;
-
-    for (let i = 1; i <= tenure; i++) {
-      const interest = remainingPrincipal * rate;
-      const principalPaid = emi - interest;
-      remainingPrincipal -= principalPaid;
-
-      emiArray.push({
-        month: i,
-        emi: emi.toFixed(2),
-        principalPaid: principalPaid.toFixed(2),
-        interestPaid: interest.toFixed(2),
-        remainingPrincipal: remainingPrincipal.toFixed(2),
-      });
-    }
-
-    setEmiDetails(emiArray);
+    setEmiDetails(schedule);
   };
 
-  const handleLogout = () => {
-    alert("Logged out successfully!"); // Replace with actual logout logic
+  const selectLoanType = (type) => {
+    setLoanType(type);
+    setInterestRate(loanRates[type]);
+    setEmiDetails([]);
   };
 
   return (
     <div className="emi-calculator-container">
-      {/* Header */}
       <div className="header">
-        {/* Back Button */}
-        <button className="back-button" onClick={() => window.history.back()}>
-          &larr; Back
-        </button>
-
-        {/* Profile Section */}
-        {/* <div className="profile-section" onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}>
-          <img
-            src="https://via.placeholder.com/40" // Placeholder image URL
-            alt="Profile"
-            className="profile-image"
-          />
-          {isProfileDropdownOpen && (
-            <div className="profile-dropdown">
-              <button className="logout-button" onClick={handleLogout}>
-                Logout
-              </button>
-            </div>
-          )}
-        </div> */}
+        <button className="back-button" onClick={() => navigate(-1)}>← Back</button>
       </div>
 
-      {/* EMI Calculator Form */}
-      <div className="emi-calculator-content">
+      <main className="emi-calculator-content">
+        <p className="eyebrow">Loan Planning Tool</p>
         <h2>EMI Calculator</h2>
+        <p>Estimate your monthly payment and understand the total interest before applying.</p>
 
-        {/* Loan Type Dropdown */}
         <div className="input-group">
           <label>Type of Loan:</label>
-          <select
-            value={loanType}
-            onChange={(e) => setLoanType(e.target.value)}
-          >
-            <option value="Home Loan">Home Loan</option>
-            <option value="Personal Loan">Personal Loan</option>
-            <option value="Car Loan">Car Loan</option>
-            <option value="Gold Loan">Gold Loan</option>
+          <select value={loanType} onChange={(e) => selectLoanType(e.target.value)}>
+            {Object.keys(loanRates).map((type) => <option key={type}>{type}</option>)}
           </select>
         </div>
-
-        {/* Loan Amount Input */}
         <div className="input-group">
           <label>Loan Amount (₹):</label>
-          <input
-            type="number"
-            value={loanAmount}
-            onChange={(e) => setLoanAmount(e.target.value)}
-            placeholder="Enter loan amount"
-          />
+          <input type="number" min="1" value={loanAmount} onChange={(e) => setLoanAmount(e.target.value)} placeholder="e.g. 500000" />
         </div>
-
-        {/* Interest Rate Input */}
         <div className="input-group">
-          <label>Interest Rate (%):</label>
-          <input
-            type="number"
-            value={interestRate}
-            onChange={(e) => setInterestRate(e.target.value)}
-            placeholder="Enter interest rate"
-          />
+          <label>Interest Rate (% p.a.):</label>
+          <input type="number" min="0.1" max="50" step="0.01" value={interestRate} onChange={(e) => setInterestRate(e.target.value)} />
         </div>
-
-        {/* Loan Tenure Input */}
         <div className="input-group">
           <label>Loan Tenure (Months):</label>
-          <input
-            type="number"
-            value={loanTenure}
-            onChange={(e) => setLoanTenure(e.target.value)}
-            placeholder="Enter loan tenure"
-          />
+          <input type="number" min="1" max="360" value={loanTenure} onChange={(e) => setLoanTenure(e.target.value)} />
         </div>
 
-        {/* Calculate Button */}
-        <button className="calculate-button" onClick={calculateEMI}>
-          Calculate EMI
-        </button>
+        <button className="calculate-button" onClick={calculateEMI}>Calculate EMI</button>
 
-        {/* EMI Details Table */}
+        {summary && (
+          <div className="emi-summary">
+            <div><span>Monthly EMI</span><strong>₹{summary.emi.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</strong></div>
+            <div><span>Total Interest</span><strong>₹{summary.totalInterest.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</strong></div>
+            <div><span>Total Payment</span><strong>₹{summary.totalPayment.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</strong></div>
+          </div>
+        )}
+
         {emiDetails.length > 0 && (
           <div className="emi-table-container">
-            <h3>EMI Breakdown</h3>
+            <h3>Amortization Schedule</h3>
             <div className="table-scroll">
               <table>
-                <thead>
-                  <tr>
-                    <th>Month</th>
-                    <th>EMI (₹)</th>
-                    <th>Principal Paid (₹)</th>
-                    <th>Interest Paid (₹)</th>
-                    <th>Remaining Principal (₹)</th>
+                <thead><tr><th>Month</th><th>EMI (₹)</th><th>Principal (₹)</th><th>Interest (₹)</th><th>Balance (₹)</th></tr></thead>
+                <tbody>{emiDetails.map((row) => (
+                  <tr key={row.month}>
+                    <td>{row.month}</td>
+                    <td>{row.emi.toFixed(2)}</td>
+                    <td>{row.principalPaid.toFixed(2)}</td>
+                    <td>{row.interestPaid.toFixed(2)}</td>
+                    <td>{row.remainingPrincipal.toFixed(2)}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {emiDetails.map((emi, index) => (
-                    <tr key={index}>
-                      <td>{emi.month}</td>
-                      <td>{emi.emi}</td>
-                      <td>{emi.principalPaid}</td>
-                      <td>{emi.interestPaid}</td>
-                      <td>{emi.remainingPrincipal}</td>
-                    </tr>
-                  ))}
-                </tbody>
+                ))}</tbody>
               </table>
             </div>
           </div>
         )}
-      </div>
-
-      {/* Footer */}
-      <footer className="footer">
-        <p>&copy; 2025 Loan Management System. All rights reserved.</p>
-      </footer>
+      </main>
+      <footer className="footer"><p>&copy; 2026 Loan Management System</p></footer>
     </div>
   );
-};
+}
 
 export default EMICalculator;
