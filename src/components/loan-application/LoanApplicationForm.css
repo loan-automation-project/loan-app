@@ -1,587 +1,86 @@
-/* 
 .loan-application-container {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  background-color: #f5f5f5;
+  background: #f5f7fb;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2c3e50;
-  color: white;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 14px 24px;
+  background: #1f2937;
+  color: #fff;
 }
 
-.back-button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 16px;
+.header button {
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 14px;
   cursor: pointer;
+  background: #374151;
+  color: #fff;
 }
 
-.back-button:hover {
-  color: #1abc9c;
-}
-
-.profile-section {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-}
-
-.profile-image {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.profile-dropdown {
-  position: absolute;
-  top: 50px;
-  right: 0;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  z-index: 1000;
-  min-width: 150px;
-}
-
-.logout-button {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100%;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
-}
-
-.logout-button:hover {
-  background-color: #c82333;
-}
-
+.back-button { background: transparent !important; }
 
 .loan-application-form {
-  max-width: 800px; 
-  width: 90%; 
-  margin: 20px auto; 
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: min(960px, calc(100% - 32px));
+  margin: 28px auto;
+  padding: 28px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(31, 41, 55, 0.08);
 }
 
-.loan-application-form h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #2c3e50;
-}
+.application-header { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; }
+.application-header h2 { margin: 4px 0; color: #111827; }
+.application-header p { color: #6b7280; margin: 0; }
+.eyebrow { text-transform: uppercase; letter-spacing: .08em; font-size: 12px; font-weight: 700; color: #2563eb !important; }
 
-.loan-application-form label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #333;
-}
+.progress-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 28px 0; }
+.progress-step { display: flex; align-items: center; gap: 8px; color: #9ca3af; font-size: 13px; }
+.progress-step span { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: #e5e7eb; font-weight: 700; }
+.progress-step.active { color: #2563eb; }
+.progress-step.active span { background: #2563eb; color: #fff; }
 
+.form-step { min-height: 300px; }
+.form-step h3 { color: #1f2937; margin-top: 0; }
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.loan-application-form label { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; color: #374151; font-weight: 600; }
 .loan-application-form input,
-.loan-application-form select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
+.loan-application-form select,
+.loan-application-form textarea { width: 100%; box-sizing: border-box; padding: 11px 12px; border: 1px solid #d1d5db; border-radius: 9px; font-size: 15px; background: #fff; }
 .loan-application-form input:focus,
-.loan-application-form select:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-.loan-application-form .array-field {
-  margin-bottom: 20px;
-}
-
-.loan-application-form .array-field input {
-  margin-bottom: 10px;
-}
-
-.loan-application-form button[type="submit"] {
-  width: 100%;
-  padding: 12px;
-  background-color: #1abc9c;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.loan-application-form button[type="submit"]:hover {
-  background-color: #16a085;
-}
-
-.loan-application-form button[type="button"] {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.loan-application-form button[type="button"]:hover {
-  background-color: #2980b9;
-}
-
-
-.footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #2c3e50;
-  color: white;
-  margin-top: auto;
-}  */
-
-
-
-
-
-
-
-
-/* LoanApplicationForm.css */
-/* .loan-application-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.back-button {
-  background: none;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.profile-section {
-  position: relative;
-  cursor: pointer;
-}
-
-.profile-image {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.profile-dropdown {
-  position: absolute;
-  top: 50px;
-  right: 0;
-  background: white;
-  border: 1px solid #ccc;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.logout-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.loan-application-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.loan-application-form h2 {
-  margin-bottom: 20px;
-}
-
-.loan-application-form label {
-  font-weight: bold;
-}
-
-.loan-application-form input,
-.loan-application-form select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.array-field {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.next-button {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.footer {
-  margin-top: 40px;
-  text-align: center;
-  font-size: 14px;
-  color: #666;
-} */
-
-
-
-
-
-
-/* .loan-application-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #f5f5f5;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #2c3e50;
-  color: white;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.back-button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.back-button:hover {
-  color: #1abc9c;
-}
-
-.profile-section {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-}
-
-.profile-image {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.profile-dropdown {
-  position: absolute;
-  top: 50px;
-  right: 0;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  z-index: 1000;
-  min-width: 150px;
-}
-
-.logout-button {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100%;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
-}
-
-.logout-button:hover {
-  background-color: #c82333;
-}
-
-.loan-application-form {
-  max-width: 800px; 
-  width: 90%; 
-  margin: 20px auto; 
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.loan-application-form h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #2c3e50;
-}
-
-.loan-application-form label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #333;
-}
-
-.loan-application-form input,
-.loan-application-form select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-
-.file-upload-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.file-upload-container input[type="file"] {
-  flex: 1;
-  margin-bottom: 0;
-  width: auto;
-}
-
-.loan-application-form input:focus,
-.loan-application-form select:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-.loan-application-form .array-field {
-  margin-bottom: 20px;
-}
-
-.loan-application-form .array-field input {
-  margin-bottom: 10px;
-}
-
-.loan-application-form button[type="submit"] {
-  width: 100%;
-  padding: 12px;
-  background-color: #1abc9c;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.loan-application-form button[type="submit"]:hover {
-  background-color: #16a085;
-}
-
-.loan-application-form button[type="button"] {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  min-width: 80px;
-  width: auto;
-}
-
-.loan-application-form button[type="button"]:hover {
-  background-color: #2980b9;
-}
-
-.footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #2c3e50;
-  color: white;
-  margin-top: auto;
-} */
-
-
-
-
-
-
-
-.loan-application-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #f5f5f5;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #2c3e50;
-  color: white;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.back-button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.back-button:hover {
-  color: #1abc9c;
-}
-
-.loan-application-form {
-  max-width: 800px;
-  width: 90%;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.loan-application-form h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #2c3e50;
-}
-
-.loan-application-form label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #333;
-}
-
-.loan-application-form input,
-.loan-application-form select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-/* File input container styles */
-.file-input-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.file-input-container input[type="file"] {
-  flex: 1;
-  margin: 0;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.file-input-container button {
-  min-width: 100px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
-  background-color: #007bff;  /* Default blue color */
-}
-
-.file-input-container button:hover {
-  background-color: #0056b3;  /* Darker blue on hover */
-}
-
-.file-input-container button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-/* Upload status button styles */
-.upload-success {
-  background-color: #28a745 !important;
-}
-
-.upload-error {
-  background-color: #dc3545 !important;
-}
-
-.upload-uploading {
-  background-color: #ffc107 !important;
-  color: #000 !important;
-}
-
-/* Form field spacing */
-.form-field {
-  margin-bottom: 20px;
-}
-
-/* Submit button */
-.submit-buttonn {
-  width: 100%;
-  padding: 12px;
-  background-color: #0dcfa8;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 20px;
-}
-
-.submit-buttonn:hover {
-  background-color: #16a085;
-}
-
-.footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #2c3e50;
-  color: white;
-  margin-top: auto;
+.loan-application-form select:focus,
+.loan-application-form textarea:focus { outline: 2px solid rgba(37, 99, 235, .15); border-color: #2563eb; }
+
+.section-heading { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+.section-heading button,
+.repeatable-card > button { border: 0; border-radius: 7px; padding: 7px 11px; cursor: pointer; background: #eef2ff; color: #3730a3; }
+.section-heading button:disabled { opacity: .5; cursor: not-allowed; }
+.repeatable-card { padding: 16px; margin-bottom: 16px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fafafa; }
+
+.info-card { margin-top: 18px; padding: 16px; border-radius: 10px; background: #eff6ff; color: #1e3a8a; }
+.info-card p { margin: 6px 0 0; }
+.form-error { margin-bottom: 18px; padding: 12px 14px; border-radius: 9px; background: #fef2f2; color: #b91c1c; }
+
+.review-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.review-grid div { padding: 14px; border: 1px solid #e5e7eb; border-radius: 10px; background: #fafafa; }
+.review-grid strong, .review-grid span { display: block; }
+.review-grid span { margin-top: 5px; color: #4b5563; }
+
+.form-actions { display: flex; justify-content: space-between; gap: 12px; padding-top: 22px; border-top: 1px solid #e5e7eb; }
+.form-actions button { min-width: 120px; border: 0; border-radius: 9px; padding: 11px 18px; cursor: pointer; background: #e5e7eb; color: #1f2937; }
+.form-actions button:disabled { opacity: .5; cursor: not-allowed; }
+.form-actions .submit-button { background: #2563eb; color: #fff; }
+.form-actions .submit-button:hover { background: #1d4ed8; }
+
+.footer { text-align: center; padding: 18px; background: #1f2937; color: #fff; margin-top: auto; }
+
+@media (max-width: 700px) {
+  .loan-application-form { padding: 18px; }
+  .form-grid, .review-grid { grid-template-columns: 1fr; }
+  .progress-step small { display: none; }
 }
